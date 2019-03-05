@@ -1,0 +1,106 @@
+32c63b2741e3d8f628de9e427a1582fd
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactstrap = require("reactstrap");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _auth = _interopRequireDefault(require("../../authentication/auth"));
+
+var _jsxFileName = "/home/anupamaa/Desktop/Training/pos/server/client/src/components/Shared/Header.js";
+
+class Header extends _react.default.Component {
+  logout(e) {
+    _auth.default.logout(() => {
+      this.context.router.history.push("/");
+    });
+  }
+
+  render() {
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Navbar, {
+      color: "navbar-dark bg-dark",
+      light: true,
+      expand: "md",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.NavbarBrand, {
+      href: "/",
+      tag: "h2",
+      className: "orangify",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24
+      },
+      __self: this
+    }, " Cake | POS "), _react.default.createElement(_reactstrap.NavbarToggler, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }), _react.default.createElement(_reactstrap.Collapse, {
+      navbar: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Nav, {
+      className: "ml-auto",
+      navbar: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.NavItem, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Button, {
+      style: {
+        color: "orange"
+      },
+      onClick: this.logout.bind(this),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, "Log Out"))))), _react.default.createElement("br", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 36
+      },
+      __self: this
+    }));
+  }
+
+}
+
+Header.contextTypes = {
+  router: _propTypes.default.object
+};
+var _default = Header;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkhlYWRlci5qcyJdLCJuYW1lcyI6WyJIZWFkZXIiLCJSZWFjdCIsIkNvbXBvbmVudCIsImxvZ291dCIsImUiLCJhdXRoIiwiY29udGV4dCIsInJvdXRlciIsImhpc3RvcnkiLCJwdXNoIiwicmVuZGVyIiwiY29sb3IiLCJiaW5kIiwiY29udGV4dFR5cGVzIiwiUHJvcFR5cGVzIiwib2JqZWN0Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7OztBQUdBLE1BQU1BLE1BQU4sU0FBcUJDLGVBQU1DLFNBQTNCLENBQXFDO0FBTWpDQyxFQUFBQSxNQUFNLENBQUNDLENBQUQsRUFBRztBQUNMQyxrQkFBS0YsTUFBTCxDQUFZLE1BQU07QUFDZCxXQUFLRyxPQUFMLENBQWFDLE1BQWIsQ0FBb0JDLE9BQXBCLENBQTRCQyxJQUE1QixDQUFpQyxHQUFqQztBQUNILEtBRkQ7QUFHSDs7QUFFREMsRUFBQUEsTUFBTSxHQUFHO0FBRUwsV0FDSTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNKLDZCQUFDLGtCQUFEO0FBQVEsTUFBQSxLQUFLLEVBQUMscUJBQWQ7QUFBb0MsTUFBQSxLQUFLLE1BQXpDO0FBQTBDLE1BQUEsTUFBTSxFQUFDLElBQWpEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0EsNkJBQUMsdUJBQUQ7QUFBYSxNQUFBLElBQUksRUFBQyxHQUFsQjtBQUFzQixNQUFBLEdBQUcsRUFBQyxJQUExQjtBQUErQixNQUFBLFNBQVMsRUFBQyxVQUF6QztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxzQkFEQSxFQUVKLDZCQUFDLHlCQUFEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE1BRkksRUFHSiw2QkFBQyxvQkFBRDtBQUFVLE1BQUEsTUFBTSxNQUFoQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNBLDZCQUFDLGVBQUQ7QUFBSyxNQUFBLFNBQVMsRUFBQyxTQUFmO0FBQXlCLE1BQUEsTUFBTSxNQUEvQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNBLDZCQUFDLG1CQUFEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0EsNkJBQUMsa0JBQUQ7QUFBUSxNQUFBLEtBQUssRUFBRTtBQUFFQyxRQUFBQSxLQUFLLEVBQUU7QUFBVCxPQUFmO0FBQW9DLE1BQUEsT0FBTyxFQUFFLEtBQUtSLE1BQUwsQ0FBWVMsSUFBWixDQUFpQixJQUFqQixDQUE3QztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFEQSxDQURBLENBREEsQ0FISSxDQURJLEVBY1I7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFkUSxDQURKO0FBa0JIOztBQWhDZ0M7O0FBQS9CWixNLENBRUthLFksR0FBZTtBQUNsQk4sRUFBQUEsTUFBTSxFQUFFTyxtQkFBVUM7QUFEQSxDO2VBaUNYZixNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IE5hdiwgTmF2SXRlbSwgTmF2YmFyLCBOYXZiYXJCcmFuZCwgQ29sbGFwc2UsIE5hdmJhclRvZ2dsZXIsIEJ1dHRvbiB9IGZyb20gJ3JlYWN0c3RyYXAnO1xuaW1wb3J0IFByb3BUeXBlcyBmcm9tICdwcm9wLXR5cGVzJztcbmltcG9ydCBhdXRoIGZyb20gJy4uLy4uL2F1dGhlbnRpY2F0aW9uL2F1dGgnO1xuXG5cbmNsYXNzIEhlYWRlciBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG5cbiAgICBzdGF0aWMgY29udGV4dFR5cGVzID0ge1xuICAgICAgICByb3V0ZXI6IFByb3BUeXBlcy5vYmplY3RcbiAgICB9XG5cbiAgICBsb2dvdXQoZSl7XG4gICAgICAgIGF1dGgubG9nb3V0KCgpID0+IHtcbiAgICAgICAgICAgIHRoaXMuY29udGV4dC5yb3V0ZXIuaGlzdG9yeS5wdXNoKFwiL1wiKTtcbiAgICAgICAgfSk7XG4gICAgfVxuXG4gICAgcmVuZGVyKCkge1xuXG4gICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICA8ZGl2PlxuICAgICAgICA8TmF2YmFyIGNvbG9yPVwibmF2YmFyLWRhcmsgYmctZGFya1wiIGxpZ2h0IGV4cGFuZD1cIm1kXCI+XG4gICAgICAgIDxOYXZiYXJCcmFuZCBocmVmPVwiL1wiIHRhZz1cImgyXCIgY2xhc3NOYW1lPVwib3JhbmdpZnlcIj4gQ2FrZSB8IFBPUyA8L05hdmJhckJyYW5kPlxuICAgIDxOYXZiYXJUb2dnbGVyIC8+XG4gICAgPENvbGxhcHNlIG5hdmJhcj5cbiAgICA8TmF2IGNsYXNzTmFtZT1cIm1sLWF1dG9cIiBuYXZiYXI+XG4gICAgPE5hdkl0ZW0+XG4gICAgPEJ1dHRvbiBzdHlsZT17eyBjb2xvcjogXCJvcmFuZ2VcIiB9fSBvbkNsaWNrPXt0aGlzLmxvZ291dC5iaW5kKHRoaXMpfSA+TG9nIE91dDwvQnV0dG9uPlxuICAgIDwvTmF2SXRlbT5cbiAgICA8L05hdj5cblxuICAgIDwvQ29sbGFwc2U+XG5cbiAgICA8L05hdmJhcj5cbiAgICA8YnIgLz5cbiAgICA8L2Rpdj5cbiAgICApO1xuICAgIH1cbn1cblxuZXhwb3J0IGRlZmF1bHQgSGVhZGVyOyJdfQ==

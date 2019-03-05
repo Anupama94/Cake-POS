@@ -1,0 +1,55 @@
+e1578327356e5738554d2fabafce0333
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+var _Header = _interopRequireDefault(require("./Header"));
+
+var _jsxFileName = "/home/anupamaa/Desktop/Training/pos/server/client/src/components/Shared/Header.test.js";
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
+});
+describe("<Header />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = (0, _enzyme.shallow)(_react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: void 0
+    }, _react.default.createElement("button", {
+      className: "btn btn-primary",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: void 0
+    }, "OK")));
+  });
+  it('includes a nav-bar-brand that specifies the application name', () => {
+    const button = wrapper.find('.btn');
+    expect(button.text()).toBe('OK');
+  }); // it('should render a anchor tag', () => {
+  //     const wrapper = shallow(
+  //         <a
+  //     className="App-link"
+  //     href="https://reactjs.org"
+  //     target="_blank"
+  //     rel="noopener noreferrer"
+  //         >
+  //         Learn React
+  //     </a>
+  // );
+  //
+  //     // expect(component).toMatchSnapshot();
+  //     expect(wrapper).toMatchSnapshot();
+  // });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkhlYWRlci50ZXN0LmpzIl0sIm5hbWVzIjpbImFkYXB0ZXIiLCJBZGFwdGVyIiwiZGVzY3JpYmUiLCJ3cmFwcGVyIiwiYmVmb3JlRWFjaCIsIml0IiwiYnV0dG9uIiwiZmluZCIsImV4cGVjdCIsInRleHQiLCJ0b0JlIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBR0E7OztBQUVBLHVCQUFVO0FBQUNBLEVBQUFBLE9BQU8sRUFBRSxJQUFJQywyQkFBSjtBQUFWLENBQVY7QUFFQUMsUUFBUSxDQUFDLFlBQUQsRUFBZSxNQUFNO0FBRXpCLE1BQUlDLE9BQUo7QUFFQUMsRUFBQUEsVUFBVSxDQUFDLE1BQU07QUFBQ0QsSUFBQUEsT0FBTyxHQUFHLHFCQUFRO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQUs7QUFBUSxNQUFBLFNBQVMsRUFBQyxpQkFBbEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFBTCxDQUFSLENBQVY7QUFBZ0YsR0FBeEYsQ0FBVjtBQUVBRSxFQUFBQSxFQUFFLENBQUMsOERBQUQsRUFBaUUsTUFBTTtBQUVyRSxVQUFNQyxNQUFNLEdBQUdILE9BQU8sQ0FBQ0ksSUFBUixDQUFhLE1BQWIsQ0FBZjtBQUNBQyxJQUFBQSxNQUFNLENBQUNGLE1BQU0sQ0FBQ0csSUFBUCxFQUFELENBQU4sQ0FBc0JDLElBQXRCLENBQTJCLElBQTNCO0FBQ0gsR0FKQyxDQUFGLENBTnlCLENBWXpCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNILENBM0JPLENBQVIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgY29uZmlndXJlIH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBBZGFwdGVyIGZyb20gJ2VuenltZS1hZGFwdGVyLXJlYWN0LTE2JztcblxuaW1wb3J0IHsgc2hhbGxvdyB9IGZyb20gJ2VuenltZSc7XG5pbXBvcnQgSGVhZGVyIGZyb20gJy4vSGVhZGVyJztcblxuY29uZmlndXJlKHthZGFwdGVyOiBuZXcgQWRhcHRlcigpfSk7XG5cbmRlc2NyaWJlKFwiPEhlYWRlciAvPlwiLCAoKSA9PiB7XG5cbiAgICBsZXQgd3JhcHBlcjtcblxuICAgIGJlZm9yZUVhY2goKCkgPT4ge3dyYXBwZXIgPSBzaGFsbG93KDxkaXY+PGJ1dHRvbiBjbGFzc05hbWU9J2J0biBidG4tcHJpbWFyeSc+T0s8L2J1dHRvbj48L2Rpdj4pOyB9KTtcblxuICAgIGl0KCdpbmNsdWRlcyBhIG5hdi1iYXItYnJhbmQgdGhhdCBzcGVjaWZpZXMgdGhlIGFwcGxpY2F0aW9uIG5hbWUnLCAoKSA9PiB7XG5cbiAgICAgICAgY29uc3QgYnV0dG9uID0gd3JhcHBlci5maW5kKCcuYnRuJyk7XG4gICAgICAgIGV4cGVjdChidXR0b24udGV4dCgpKS50b0JlKCdPSycpO1xuICAgIH0pO1xuXG4gICAgLy8gaXQoJ3Nob3VsZCByZW5kZXIgYSBhbmNob3IgdGFnJywgKCkgPT4ge1xuICAgIC8vICAgICBjb25zdCB3cmFwcGVyID0gc2hhbGxvdyhcbiAgICAvLyAgICAgICAgIDxhXG4gICAgLy8gICAgIGNsYXNzTmFtZT1cIkFwcC1saW5rXCJcbiAgICAvLyAgICAgaHJlZj1cImh0dHBzOi8vcmVhY3Rqcy5vcmdcIlxuICAgIC8vICAgICB0YXJnZXQ9XCJfYmxhbmtcIlxuICAgIC8vICAgICByZWw9XCJub29wZW5lciBub3JlZmVycmVyXCJcbiAgICAvLyAgICAgICAgID5cbiAgICAvLyAgICAgICAgIExlYXJuIFJlYWN0XG4gICAgLy8gICAgIDwvYT5cbiAgICAvLyApO1xuICAgIC8vXG4gICAgLy8gICAgIC8vIGV4cGVjdChjb21wb25lbnQpLnRvTWF0Y2hTbmFwc2hvdCgpO1xuICAgIC8vICAgICBleHBlY3Qod3JhcHBlcikudG9NYXRjaFNuYXBzaG90KCk7XG4gICAgLy8gfSk7XG59KTsiXX0=

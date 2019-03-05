@@ -1,0 +1,16 @@
+3d0d3b0f4f2f2827f05498a39f2321e1
+"use strict";
+
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import App from './App';
+//
+// it('renders without crashing', () => {
+//   const div = document.createElement('div');
+//   ReactDOM.render(<App />, div);
+//   ReactDOM.unmountComponentAtNode(div);
+// });
+test('Fake Test', () => {
+  expect(true).toBeTruthy;
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkFwcC50ZXN0LmpzIl0sIm5hbWVzIjpbInRlc3QiLCJleHBlY3QiLCJ0b0JlVHJ1dGh5Il0sIm1hcHBpbmdzIjoiOztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUdBQSxJQUFJLENBQUMsV0FBRCxFQUFjLE1BQU07QUFDcEJDLEVBQUFBLE1BQU0sQ0FBQyxJQUFELENBQU4sQ0FBYUMsVUFBYjtBQUNILENBRkcsQ0FBSiIsInNvdXJjZXNDb250ZW50IjpbIi8vIGltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG4vLyBpbXBvcnQgUmVhY3RET00gZnJvbSAncmVhY3QtZG9tJztcbi8vIGltcG9ydCBBcHAgZnJvbSAnLi9BcHAnO1xuLy9cbi8vIGl0KCdyZW5kZXJzIHdpdGhvdXQgY3Jhc2hpbmcnLCAoKSA9PiB7XG4vLyAgIGNvbnN0IGRpdiA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuLy8gICBSZWFjdERPTS5yZW5kZXIoPEFwcCAvPiwgZGl2KTtcbi8vICAgUmVhY3RET00udW5tb3VudENvbXBvbmVudEF0Tm9kZShkaXYpO1xuLy8gfSk7XG5cblxudGVzdCgnRmFrZSBUZXN0JywgKCkgPT4ge1xuICAgIGV4cGVjdCh0cnVlKS50b0JlVHJ1dGh5XG59KSJdfQ==

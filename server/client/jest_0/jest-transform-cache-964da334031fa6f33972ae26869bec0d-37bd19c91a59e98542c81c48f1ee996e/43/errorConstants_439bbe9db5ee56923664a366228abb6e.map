@@ -1,0 +1,1 @@
+{"version":3,"sources":["errorConstants.js"],"names":["AUTH_FAILED","MESSAGE","CODE"],"mappings":";;;;;;AAAO,MAAMA,WAAW,GAAG;AACvBC,EAAAA,OAAO,EAAE,qBADc;AAEvBC,EAAAA,IAAI,EAAE;AAFiB,CAApB","sourcesContent":["export const AUTH_FAILED = {\n    MESSAGE: \"Invalid Credentials\",\n    CODE: 4000\n}"]}

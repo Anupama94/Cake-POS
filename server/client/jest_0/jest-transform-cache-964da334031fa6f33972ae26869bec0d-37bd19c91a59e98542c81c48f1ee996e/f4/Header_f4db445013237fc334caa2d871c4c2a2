@@ -1,0 +1,99 @@
+5cc526c425e5b3f4e641679dc08a4473
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactstrap = require("reactstrap");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _auth = _interopRequireDefault(require("../../authentication/auth"));
+
+var _jsxFileName = "/home/anupamaa/Desktop/Training/pos/server/client/src/components/Shared/Header.js";
+
+class Header extends _react.default.Component {
+  logout(e) {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
+      _auth.default.logout(() => {
+        this.context.router.history.push("/");
+      });
+    }
+  }
+
+  render() {
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Navbar, {
+      color: "navbar-dark bg-dark",
+      light: true,
+      expand: "md",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.NavbarBrand, {
+      href: "/",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, _react.default.createElement("h2", {
+      className: "orangify",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, "Cake | POS")), _react.default.createElement(_reactstrap.Nav, {
+      className: "ml-auto",
+      navbar: true,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.NavItem, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 32
+      },
+      __self: this
+    }, _react.default.createElement(_reactstrap.Button, {
+      className: "orangify",
+      id: "logout-btn",
+      onClick: this.logout.bind(this),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      },
+      __self: this
+    }, "Log Out")))), _react.default.createElement("br", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39
+      },
+      __self: this
+    }));
+  }
+
+}
+
+Header.contextTypes = {
+  router: _propTypes.default.object
+};
+var _default = Header;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkhlYWRlci5qcyJdLCJuYW1lcyI6WyJIZWFkZXIiLCJSZWFjdCIsIkNvbXBvbmVudCIsImxvZ291dCIsImUiLCJ3aW5kb3ciLCJjb25maXJtIiwiYXV0aCIsImNvbnRleHQiLCJyb3V0ZXIiLCJoaXN0b3J5IiwicHVzaCIsInJlbmRlciIsImJpbmQiLCJjb250ZXh0VHlwZXMiLCJQcm9wVHlwZXMiLCJvYmplY3QiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUNBOztBQUNBOzs7O0FBR0EsTUFBTUEsTUFBTixTQUFxQkMsZUFBTUMsU0FBM0IsQ0FBcUM7QUFNakNDLEVBQUFBLE1BQU0sQ0FBQ0MsQ0FBRCxFQUFHO0FBRUQsUUFBSUMsTUFBTSxDQUFDQyxPQUFQLENBQWUsNENBQWYsQ0FBSixFQUFpRTtBQUNqRUMsb0JBQUtKLE1BQUwsQ0FBWSxNQUFNO0FBQ2QsYUFBS0ssT0FBTCxDQUFhQyxNQUFiLENBQW9CQyxPQUFwQixDQUE0QkMsSUFBNUIsQ0FBaUMsR0FBakM7QUFDSCxPQUZEO0FBR0g7QUFHSjs7QUFFREMsRUFBQUEsTUFBTSxHQUFHO0FBRUwsV0FDSTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNKLDZCQUFDLGtCQUFEO0FBQVEsTUFBQSxLQUFLLEVBQUMscUJBQWQ7QUFBb0MsTUFBQSxLQUFLLE1BQXpDO0FBQTBDLE1BQUEsTUFBTSxFQUFDLElBQWpEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0EsNkJBQUMsdUJBQUQ7QUFBYSxNQUFBLElBQUksRUFBQyxHQUFsQjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUFzQjtBQUFJLE1BQUEsU0FBUyxFQUFDLFVBQWQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsb0JBQXRCLENBREEsRUFHSiw2QkFBQyxlQUFEO0FBQUssTUFBQSxTQUFTLEVBQUMsU0FBZjtBQUF5QixNQUFBLE1BQU0sTUFBL0I7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDQSw2QkFBQyxtQkFBRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNBLDZCQUFDLGtCQUFEO0FBQVEsTUFBQSxTQUFTLEVBQUMsVUFBbEI7QUFBNkIsTUFBQSxFQUFFLEVBQUMsWUFBaEM7QUFBNkMsTUFBQSxPQUFPLEVBQUUsS0FBS1QsTUFBTCxDQUFZVSxJQUFaLENBQWlCLElBQWpCLENBQXREO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLGlCQURBLENBREEsQ0FISSxDQURJLEVBWVI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFaUSxDQURKO0FBZ0JIOztBQW5DZ0M7O0FBQS9CYixNLENBRUtjLFksR0FBZTtBQUNsQkwsRUFBQUEsTUFBTSxFQUFFTSxtQkFBVUM7QUFEQSxDO2VBb0NYaEIsTSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBOYXYsIE5hdkl0ZW0sIE5hdmJhciwgTmF2YmFyQnJhbmQsIENvbGxhcHNlLCBOYXZiYXJUb2dnbGVyLCBCdXR0b24gfSBmcm9tICdyZWFjdHN0cmFwJztcbmltcG9ydCBQcm9wVHlwZXMgZnJvbSAncHJvcC10eXBlcyc7XG5pbXBvcnQgYXV0aCBmcm9tICcuLi8uLi9hdXRoZW50aWNhdGlvbi9hdXRoJztcblxuXG5jbGFzcyBIZWFkZXIgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gICAgc3RhdGljIGNvbnRleHRUeXBlcyA9IHtcbiAgICAgICAgcm91dGVyOiBQcm9wVHlwZXMub2JqZWN0XG4gICAgfVxuXG4gICAgbG9nb3V0KGUpe1xuXG4gICAgICAgICAgICBpZiAod2luZG93LmNvbmZpcm0oJ0FyZSB5b3Ugc3VyZSB5b3Ugd2lzaCB0byBkZWxldGUgdGhpcyBpdGVtPycpKXtcbiAgICAgICAgICAgIGF1dGgubG9nb3V0KCgpID0+IHtcbiAgICAgICAgICAgICAgICB0aGlzLmNvbnRleHQucm91dGVyLmhpc3RvcnkucHVzaChcIi9cIik7XG4gICAgICAgICAgICB9KTtcbiAgICAgICAgfVxuICAgICAgICBcblxuICAgIH1cblxuICAgIHJlbmRlcigpIHtcblxuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgPE5hdmJhciBjb2xvcj1cIm5hdmJhci1kYXJrIGJnLWRhcmtcIiBsaWdodCBleHBhbmQ9XCJtZFwiPlxuICAgICAgICA8TmF2YmFyQnJhbmQgaHJlZj1cIi9cIj48aDIgY2xhc3NOYW1lPVwib3JhbmdpZnlcIj5DYWtlIHwgUE9TPC9oMj48L05hdmJhckJyYW5kPlxuXG4gICAgPE5hdiBjbGFzc05hbWU9XCJtbC1hdXRvXCIgbmF2YmFyPlxuICAgIDxOYXZJdGVtPlxuICAgIDxCdXR0b24gY2xhc3NOYW1lPVwib3JhbmdpZnlcIiBpZD1cImxvZ291dC1idG5cIiBvbkNsaWNrPXt0aGlzLmxvZ291dC5iaW5kKHRoaXMpfSA+TG9nIE91dDwvQnV0dG9uPlxuICAgIDwvTmF2SXRlbT5cbiAgICA8L05hdj5cblxuXG4gICAgPC9OYXZiYXI+XG4gICAgPGJyIC8+XG4gICAgPC9kaXY+XG4gICAgKTtcbiAgICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IEhlYWRlcjsiXX0=

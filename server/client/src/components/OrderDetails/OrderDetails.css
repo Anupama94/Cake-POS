@@ -1,0 +1,18 @@
+.orangify {
+    color: orange;
+}
+
+.greyify {
+    color: grey;
+}
+
+
+.btn-space {
+    margin-left: 20px;
+}
+
+#scrollableContainer {
+    position: relative;
+    max-height: 600px;
+    overflow-y: auto;
+}

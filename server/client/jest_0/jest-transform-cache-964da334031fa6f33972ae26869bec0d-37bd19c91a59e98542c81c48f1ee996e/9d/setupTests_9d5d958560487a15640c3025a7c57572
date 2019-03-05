@@ -1,0 +1,21 @@
+71e59b2addd2ad729086f258c72dfc65
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireWildcard");
+
+var _enzyme = _interopRequireWildcard(require("enzyme"));
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+// React 16 Enzyme adapter
+_enzyme.default.configure({
+  adapter: new _enzymeAdapterReact.default()
+}); // Make Enzyme functions available in all test files without importing
+
+
+global.shallow = _enzyme.shallow;
+global.render = _enzyme.render;
+global.mount = _enzyme.mount;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHVwVGVzdHMuanMiXSwibmFtZXMiOlsiRW56eW1lIiwiY29uZmlndXJlIiwiYWRhcHRlciIsIkFkYXB0ZXIiLCJnbG9iYWwiLCJzaGFsbG93IiwicmVuZGVyIiwibW91bnQiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBOztBQUNBOztBQUNBO0FBQ0FBLGdCQUFPQyxTQUFQLENBQWlCO0FBQUVDLEVBQUFBLE9BQU8sRUFBRSxJQUFJQywyQkFBSjtBQUFYLENBQWpCLEUsQ0FDQTs7O0FBQ0FDLE1BQU0sQ0FBQ0MsT0FBUCxHQUFpQkEsZUFBakI7QUFDQUQsTUFBTSxDQUFDRSxNQUFQLEdBQWdCQSxjQUFoQjtBQUNBRixNQUFNLENBQUNHLEtBQVAsR0FBZUEsYUFBZiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBFbnp5bWUsIHsgc2hhbGxvdywgcmVuZGVyLCBtb3VudCB9IGZyb20gJ2VuenltZSc7XG5pbXBvcnQgQWRhcHRlciBmcm9tICdlbnp5bWUtYWRhcHRlci1yZWFjdC0xNic7XG4vLyBSZWFjdCAxNiBFbnp5bWUgYWRhcHRlclxuRW56eW1lLmNvbmZpZ3VyZSh7IGFkYXB0ZXI6IG5ldyBBZGFwdGVyKCkgfSk7XG4vLyBNYWtlIEVuenltZSBmdW5jdGlvbnMgYXZhaWxhYmxlIGluIGFsbCB0ZXN0IGZpbGVzIHdpdGhvdXQgaW1wb3J0aW5nXG5nbG9iYWwuc2hhbGxvdyA9IHNoYWxsb3c7XG5nbG9iYWwucmVuZGVyID0gcmVuZGVyO1xuZ2xvYmFsLm1vdW50ID0gbW91bnQ7Il19

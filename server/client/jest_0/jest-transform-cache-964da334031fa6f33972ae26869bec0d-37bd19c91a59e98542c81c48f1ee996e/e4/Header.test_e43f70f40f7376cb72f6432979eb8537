@@ -1,0 +1,36 @@
+5a0e012c6a92cb0d33301d0fab86b99f
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+var _Header = _interopRequireDefault(require("./Header"));
+
+var _jsxFileName = "/home/anupamaa/Desktop/Training/pos/server/client/src/components/Shared/Header.test.js";
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
+});
+describe("<Header />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = (0, _enzyme.shallow)(_react.default.createElement(_Header.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: void 0
+    }));
+  });
+  it('includes an h2 tag that specifies the application name', () => {
+    expect(wrapper.find('h2.orangify').text()).toBe("Cake | POS");
+  });
+  it('includes a nav-bar-brand that specifies the application name', () => {
+    expect(wrapper.find('Button').text()).toBe("Cake | POS");
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkhlYWRlci50ZXN0LmpzIl0sIm5hbWVzIjpbImFkYXB0ZXIiLCJBZGFwdGVyIiwiZGVzY3JpYmUiLCJ3cmFwcGVyIiwiYmVmb3JlRWFjaCIsIml0IiwiZXhwZWN0IiwiZmluZCIsInRleHQiLCJ0b0JlIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBR0E7OztBQUVBLHVCQUFVO0FBQUNBLEVBQUFBLE9BQU8sRUFBRSxJQUFJQywyQkFBSjtBQUFWLENBQVY7QUFFQUMsUUFBUSxDQUFDLFlBQUQsRUFBZSxNQUFNO0FBRXpCLE1BQUlDLE9BQUo7QUFFQUMsRUFBQUEsVUFBVSxDQUFDLE1BQU07QUFBRUQsSUFBQUEsT0FBTyxHQUFHLHFCQUFRLDZCQUFDLGVBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUixDQUFWO0FBQWdDLEdBQXpDLENBQVY7QUFJSUUsRUFBQUEsRUFBRSxDQUFDLHdEQUFELEVBQTJELE1BQU07QUFFbkVDLElBQUFBLE1BQU0sQ0FBQ0gsT0FBTyxDQUFDSSxJQUFSLENBQWEsYUFBYixFQUE0QkMsSUFBNUIsRUFBRCxDQUFOLENBQTJDQyxJQUEzQyxDQUFnRCxZQUFoRDtBQUNILEdBSEssQ0FBRjtBQU1KSixFQUFBQSxFQUFFLENBQUMsOERBQUQsRUFBaUUsTUFBTTtBQUVyRUMsSUFBQUEsTUFBTSxDQUFDSCxPQUFPLENBQUNJLElBQVIsQ0FBYSxRQUFiLEVBQXVCQyxJQUF2QixFQUFELENBQU4sQ0FBc0NDLElBQXRDLENBQTJDLFlBQTNDO0FBQ0gsR0FIQyxDQUFGO0FBS0gsQ0FuQk8sQ0FBUiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjb25maWd1cmUgfSBmcm9tICdlbnp5bWUnO1xuaW1wb3J0IEFkYXB0ZXIgZnJvbSAnZW56eW1lLWFkYXB0ZXItcmVhY3QtMTYnO1xuXG5pbXBvcnQgeyBzaGFsbG93IH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi9IZWFkZXInO1xuXG5jb25maWd1cmUoe2FkYXB0ZXI6IG5ldyBBZGFwdGVyKCl9KTtcblxuZGVzY3JpYmUoXCI8SGVhZGVyIC8+XCIsICgpID0+IHtcblxuICAgIGxldCB3cmFwcGVyO1xuXG4gICAgYmVmb3JlRWFjaCgoKSA9PiB7IHdyYXBwZXIgPSBzaGFsbG93KDxIZWFkZXIgLz4pOyB9KTtcblxuXG5cbiAgICAgICAgaXQoJ2luY2x1ZGVzIGFuIGgyIHRhZyB0aGF0IHNwZWNpZmllcyB0aGUgYXBwbGljYXRpb24gbmFtZScsICgpID0+IHtcblxuICAgICAgICBleHBlY3Qod3JhcHBlci5maW5kKCdoMi5vcmFuZ2lmeScpLnRleHQoKSkudG9CZShcIkNha2UgfCBQT1NcIik7XG4gICAgfSk7XG5cblxuICAgIGl0KCdpbmNsdWRlcyBhIG5hdi1iYXItYnJhbmQgdGhhdCBzcGVjaWZpZXMgdGhlIGFwcGxpY2F0aW9uIG5hbWUnLCAoKSA9PiB7XG5cbiAgICAgICAgZXhwZWN0KHdyYXBwZXIuZmluZCgnQnV0dG9uJykudGV4dCgpKS50b0JlKFwiQ2FrZSB8IFBPU1wiKTtcbiAgICB9KTtcblxufSk7Il19

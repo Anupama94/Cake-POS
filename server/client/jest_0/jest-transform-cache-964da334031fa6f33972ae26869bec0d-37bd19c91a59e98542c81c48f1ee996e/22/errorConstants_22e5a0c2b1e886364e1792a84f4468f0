@@ -1,0 +1,21 @@
+a0dd5617be515f09a3e2c5dbd1442fe9
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.error = void 0;
+const error = {
+  AUTH_FAILED: {
+    MESSAGE: "Invalid Credentials !",
+    CODE: 4000
+  },
+  SERVICE_UNAVAILABLE: {
+    MESSAGE: "Service unavailable, try again later",
+    CODE: 4001
+  }
+};
+exports.error = error;
+var _default = error;
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVycm9yQ29uc3RhbnRzLmpzIl0sIm5hbWVzIjpbImVycm9yIiwiQVVUSF9GQUlMRUQiLCJNRVNTQUdFIiwiQ09ERSIsIlNFUlZJQ0VfVU5BVkFJTEFCTEUiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUNPLE1BQU1BLEtBQUssR0FBRztBQUNqQkMsRUFBQUEsV0FBVyxFQUFHO0FBQ1ZDLElBQUFBLE9BQU8sRUFBRSx1QkFEQztBQUVWQyxJQUFBQSxJQUFJLEVBQUU7QUFGSSxHQURHO0FBTWpCQyxFQUFBQSxtQkFBbUIsRUFBRztBQUNsQkYsSUFBQUEsT0FBTyxFQUFFLHNDQURTO0FBRWxCQyxJQUFBQSxJQUFJLEVBQUU7QUFGWTtBQU5MLENBQWQ7O2VBYVFILEsiLCJzb3VyY2VzQ29udGVudCI6WyJcbmV4cG9ydCBjb25zdCBlcnJvciA9IHtcbiAgICBBVVRIX0ZBSUxFRCA6IHtcbiAgICAgICAgTUVTU0FHRTogXCJJbnZhbGlkIENyZWRlbnRpYWxzICFcIixcbiAgICAgICAgQ09ERTogNDAwMFxuICAgIH0sXG5cbiAgICBTRVJWSUNFX1VOQVZBSUxBQkxFIDoge1xuICAgICAgICBNRVNTQUdFOiBcIlNlcnZpY2UgdW5hdmFpbGFibGUsIHRyeSBhZ2FpbiBsYXRlclwiLFxuICAgICAgICBDT0RFOiA0MDAxXG4gICAgfVxufVxuXG5cbmV4cG9ydCBkZWZhdWx0IGVycm9yO1xuIl19

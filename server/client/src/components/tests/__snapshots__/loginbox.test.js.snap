@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginBox Component should render correctly 1`] = `null`;
+
+exports[`Menu Component should render correctly 1`] = `null`;

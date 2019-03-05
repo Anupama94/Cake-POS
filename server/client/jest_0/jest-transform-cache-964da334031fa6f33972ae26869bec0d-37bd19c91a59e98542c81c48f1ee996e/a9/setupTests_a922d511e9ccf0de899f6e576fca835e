@@ -1,0 +1,13 @@
+7bbde433fd66cff20abfa17e72d2baca
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _enzyme = require("enzyme");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNldHVwVGVzdHMuanMiXSwibmFtZXMiOlsiYWRhcHRlciIsIkFkYXB0ZXIiXSwibWFwcGluZ3MiOiI7Ozs7QUFBQTs7QUFDQTs7QUFDQSx1QkFBVTtBQUFFQSxFQUFBQSxPQUFPLEVBQUUsSUFBSUMsMkJBQUo7QUFBWCxDQUFWIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgY29uZmlndXJlIH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBBZGFwdGVyIGZyb20gJ2VuenltZS1hZGFwdGVyLXJlYWN0LTE2JztcbmNvbmZpZ3VyZSh7IGFkYXB0ZXI6IG5ldyBBZGFwdGVyKCkgfSk7Il19

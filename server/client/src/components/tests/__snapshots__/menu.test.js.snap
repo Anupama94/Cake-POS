@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Component should render correctly 1`] = `
+<div>
+  <Card
+    color="secondary"
+    outline={true}
+    tag="div"
+  >
+    <CardHeader
+      style={
+        Object {
+          "backgroundColor": "grey",
+        }
+      }
+      tag="h3"
+    >
+      Menu
+    </CardHeader>
+    <Row
+      tag="div"
+    >
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="6"
+      >
+        <ListGroup
+          tag="ul"
+        >
+          <ListGroupItem
+            tag="li"
+          >
+            <ListGroupItemHeading
+              tag="h5"
+            >
+              Food
+            </ListGroupItemHeading>
+            <div
+              id="scrollableContainer"
+            />
+          </ListGroupItem>
+        </ListGroup>
+      </Col>
+      <Col
+        sm="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+        xs="6"
+      >
+        <ListGroup
+          tag="ul"
+        >
+          <ListGroupItem
+            tag="li"
+          >
+            <ListGroupItemHeading
+              tag="h5"
+            >
+              Beverages
+            </ListGroupItemHeading>
+            <div
+              id="scrollableContainer"
+            />
+          </ListGroupItem>
+        </ListGroup>
+      </Col>
+    </Row>
+  </Card>
+</div>
+`;

@@ -1,0 +1,54 @@
+3448253cf986371548b19446dc811eee
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _enzymeAdapterReact = _interopRequireDefault(require("enzyme-adapter-react-16"));
+
+var _Header = _interopRequireDefault(require("./Header"));
+
+var _jsxFileName = "/home/anupamaa/Desktop/Training/pos/server/client/src/components/Shared/Header.test.js";
+(0, _enzyme.configure)({
+  adapter: new _enzymeAdapterReact.default()
+});
+describe("<Header />", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = (0, _enzyme.shallow)(_react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: void 0
+    }, _react.default.createElement("button", {
+      className: "btn btn-primary",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: void 0
+    }, "OK")));
+  });
+  it('includes a nav-bar-brand that specifies the application name', () => {
+    expect(wrapper.find('h2.orangify').text()).to.be.eql("Cake | POS");
+  }); // it('should render a anchor tag', () => {
+  //     const wrapper = shallow(
+  //         <a
+  //     className="App-link"
+  //     href="https://reactjs.org"
+  //     target="_blank"
+  //     rel="noopener noreferrer"
+  //         >
+  //         Learn React
+  //     </a>
+  // );
+  //
+  //     // expect(component).toMatchSnapshot();
+  //     expect(wrapper).toMatchSnapshot();
+  // });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkhlYWRlci50ZXN0LmpzIl0sIm5hbWVzIjpbImFkYXB0ZXIiLCJBZGFwdGVyIiwiZGVzY3JpYmUiLCJ3cmFwcGVyIiwiYmVmb3JlRWFjaCIsIml0IiwiZXhwZWN0IiwiZmluZCIsInRleHQiLCJ0byIsImJlIiwiZXFsIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBR0E7OztBQUVBLHVCQUFVO0FBQUNBLEVBQUFBLE9BQU8sRUFBRSxJQUFJQywyQkFBSjtBQUFWLENBQVY7QUFFQUMsUUFBUSxDQUFDLFlBQUQsRUFBZSxNQUFNO0FBRXpCLE1BQUlDLE9BQUo7QUFFQUMsRUFBQUEsVUFBVSxDQUFDLE1BQU07QUFBQ0QsSUFBQUEsT0FBTyxHQUFHLHFCQUFRO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQUs7QUFBUSxNQUFBLFNBQVMsRUFBQyxpQkFBbEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsWUFBTCxDQUFSLENBQVY7QUFBZ0YsR0FBeEYsQ0FBVjtBQUVBRSxFQUFBQSxFQUFFLENBQUMsOERBQUQsRUFBaUUsTUFBTTtBQUVyRUMsSUFBQUEsTUFBTSxDQUFDSCxPQUFPLENBQUNJLElBQVIsQ0FBYSxhQUFiLEVBQTRCQyxJQUE1QixFQUFELENBQU4sQ0FBMkNDLEVBQTNDLENBQThDQyxFQUE5QyxDQUFpREMsR0FBakQsQ0FBcUQsWUFBckQ7QUFDSCxHQUhDLENBQUYsQ0FOeUIsQ0FXekI7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0gsQ0ExQk8sQ0FBUiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjb25maWd1cmUgfSBmcm9tICdlbnp5bWUnO1xuaW1wb3J0IEFkYXB0ZXIgZnJvbSAnZW56eW1lLWFkYXB0ZXItcmVhY3QtMTYnO1xuXG5pbXBvcnQgeyBzaGFsbG93IH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBIZWFkZXIgZnJvbSAnLi9IZWFkZXInO1xuXG5jb25maWd1cmUoe2FkYXB0ZXI6IG5ldyBBZGFwdGVyKCl9KTtcblxuZGVzY3JpYmUoXCI8SGVhZGVyIC8+XCIsICgpID0+IHtcblxuICAgIGxldCB3cmFwcGVyO1xuXG4gICAgYmVmb3JlRWFjaCgoKSA9PiB7d3JhcHBlciA9IHNoYWxsb3coPGRpdj48YnV0dG9uIGNsYXNzTmFtZT0nYnRuIGJ0bi1wcmltYXJ5Jz5PSzwvYnV0dG9uPjwvZGl2Pik7IH0pO1xuXG4gICAgaXQoJ2luY2x1ZGVzIGEgbmF2LWJhci1icmFuZCB0aGF0IHNwZWNpZmllcyB0aGUgYXBwbGljYXRpb24gbmFtZScsICgpID0+IHtcblxuICAgICAgICBleHBlY3Qod3JhcHBlci5maW5kKCdoMi5vcmFuZ2lmeScpLnRleHQoKSkudG8uYmUuZXFsKFwiQ2FrZSB8IFBPU1wiKTtcbiAgICB9KTtcblxuICAgIC8vIGl0KCdzaG91bGQgcmVuZGVyIGEgYW5jaG9yIHRhZycsICgpID0+IHtcbiAgICAvLyAgICAgY29uc3Qgd3JhcHBlciA9IHNoYWxsb3coXG4gICAgLy8gICAgICAgICA8YVxuICAgIC8vICAgICBjbGFzc05hbWU9XCJBcHAtbGlua1wiXG4gICAgLy8gICAgIGhyZWY9XCJodHRwczovL3JlYWN0anMub3JnXCJcbiAgICAvLyAgICAgdGFyZ2V0PVwiX2JsYW5rXCJcbiAgICAvLyAgICAgcmVsPVwibm9vcGVuZXIgbm9yZWZlcnJlclwiXG4gICAgLy8gICAgICAgICA+XG4gICAgLy8gICAgICAgICBMZWFybiBSZWFjdFxuICAgIC8vICAgICA8L2E+XG4gICAgLy8gKTtcbiAgICAvL1xuICAgIC8vICAgICAvLyBleHBlY3QoY29tcG9uZW50KS50b01hdGNoU25hcHNob3QoKTtcbiAgICAvLyAgICAgZXhwZWN0KHdyYXBwZXIpLnRvTWF0Y2hTbmFwc2hvdCgpO1xuICAgIC8vIH0pO1xufSk7Il19

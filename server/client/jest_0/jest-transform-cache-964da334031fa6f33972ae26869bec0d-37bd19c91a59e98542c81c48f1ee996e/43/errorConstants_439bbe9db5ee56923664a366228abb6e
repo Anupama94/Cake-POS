@@ -1,0 +1,13 @@
+598f7fa8a1edb149948c0626b5381a19
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AUTH_FAILED = void 0;
+const AUTH_FAILED = {
+  MESSAGE: "Invalid Credentials",
+  CODE: 4000
+};
+exports.AUTH_FAILED = AUTH_FAILED;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVycm9yQ29uc3RhbnRzLmpzIl0sIm5hbWVzIjpbIkFVVEhfRkFJTEVEIiwiTUVTU0FHRSIsIkNPREUiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFPLE1BQU1BLFdBQVcsR0FBRztBQUN2QkMsRUFBQUEsT0FBTyxFQUFFLHFCQURjO0FBRXZCQyxFQUFBQSxJQUFJLEVBQUU7QUFGaUIsQ0FBcEIiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgQVVUSF9GQUlMRUQgPSB7XG4gICAgTUVTU0FHRTogXCJJbnZhbGlkIENyZWRlbnRpYWxzXCIsXG4gICAgQ09ERTogNDAwMFxufSJdfQ==
