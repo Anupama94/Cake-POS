@@ -7,10 +7,7 @@ The app demonstrates a simple POS application catering to a basic set of require
 ## Requirements
 
 - Node 8
-- react: ^16.8.1
-- Git
-
-Without any changes, this app is connected to a Contentful space with read-only access. To experience the full end-to-end Contentful experience, you need to connect the app to a Contentful space with read *and* write access. This enables you to see how content editing in the Contentful web app works and how content changes propagate to this app.
+- react: 16
 
 ## Common setup
 
