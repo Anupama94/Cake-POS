@@ -17,7 +17,7 @@ Without any changes, this app is connected to a Contentful space with read-only 
 Clone the repo and install the dependencies.
 
 ```
-git clone https://github.com/CakePos.git
+git clone https://github.com/Anupama94/Cake-POS.git/
 cd server
 npm install
 ```
