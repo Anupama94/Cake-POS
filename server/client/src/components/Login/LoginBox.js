@@ -6,7 +6,7 @@ import auth from '../../authentication/auth';
 import { userLogin } from '../../apiCalls/callApi';
 
 
-  
+
 export class LoginBox extends React.Component {
 
   constructor(props) {
@@ -33,57 +33,56 @@ export class LoginBox extends React.Component {
   }
 
 
-  submitLogin(e) {
-    e.preventDefault();
-     
-    if ((this.state.validate.emailState !== 'has-success') && (this.state.validate.passwordState !== 'has-success')){
-      this.setState({validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState }});
+  submitLogin = () => {
+    
+    if ((this.state.validate.emailState !== 'has-success') && (this.state.validate.passwordState !== 'has-success')) {
+      this.setState({ validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState } });
     }
 
-    else  if ((this.state.validate.emailState === 'has-success') && (this.state.validate.passwordState !== 'has-success')){
-      this.setState({validate: { emailState: this.state.validate.emailState, passwordState: 'has-danger' }});
+    else if ((this.state.validate.emailState === 'has-success') && (this.state.validate.passwordState !== 'has-success')) {
+      this.setState({ validate: { emailState: this.state.validate.emailState, passwordState: 'has-danger' } });
     }
-    else  if ((this.state.validate.emailState !== 'has-success') && (this.state.validate.passwordState === 'has-success')){
-      this.setState({validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState }});
+    else if ((this.state.validate.emailState !== 'has-success') && (this.state.validate.passwordState === 'has-success')) {
+      this.setState({ validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState } });
     }
-    else{
-        userLogin({ email: this.state.email, password: this.state.password })
-            .then((response) => {
-                    auth.login(() => {
-                        this.context.router.history.push("/OrderList");
-                    })
-            })
-            .catch(err => {
-                this.setState({ email: '', password: '' });
-                this.setState({ validate: {emailState: 'has-danger'} });
-                this.setState({errorAlert: {visible: true, message: err.message}});
-            });
+    else {
+      userLogin({ email: this.state.email, password: this.state.password })
+        .then((response) => {
+          auth.login(() => {
+            this.context.router.history.push("/OrderList");
+          })
+        })
+        .catch(err => {
+          this.setState({ email: '', password: '' });
+          this.setState({ validate: { emailState: 'has-danger' } });
+          this.setState({ errorAlert: { visible: true, message: err.message } });
+        });
     }
 
-    
-    
-  
+
   }
 
   validateEmail(e) {
     const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    
+
     if (emailRex.test(e.target.value)) {
-      this.setState({validate: { emailState: 'has-success', passwordState: this.state.validate.passwordState }});
+      this.setState({ validate: { emailState: 'has-success', passwordState: this.state.validate.passwordState } });
     } else {
-      this.setState({validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState }});
+      this.setState({ validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState } });
     }
 
   }
+
 
   validatePassword(e) {
-    if (e.target.value){
-      this.setState({validate: { emailState: this.state.validate.emailState, passwordState: 'has-success' }});
+    if (e.target.value) {
+      this.setState({ validate: { emailState: this.state.validate.emailState, passwordState: 'has-success' } });
     }
-    else{
-      this.setState({validate: { emailState: this.state.validate.emailState, passwordState: 'has-danger' }});
+    else {
+      this.setState({ validate: { emailState: this.state.validate.emailState, passwordState: 'has-danger' } });
     }
   }
+
 
   handleChange = async (event) => {
     const { target } = event;
@@ -132,7 +131,7 @@ export class LoginBox extends React.Component {
               <FormGroup>
                 <Label for="examplePassword">Password</Label>
                 <Input
-                required
+                  required
                   type="password"
                   name="password"
                   id="examplePassword"
@@ -143,7 +142,7 @@ export class LoginBox extends React.Component {
                   onChange={(e) => {
                     this.validatePassword(e)
                     this.handleChange(e)
-                    }
+                  }
                   }
                 />
                 <FormFeedback invalid>
@@ -154,10 +153,10 @@ export class LoginBox extends React.Component {
           </Form>
 
           <Alert color="danger" isOpen={this.state.errorAlert.visible}>
-                  {this.state.errorAlert.message}
-      </Alert>
+            {this.state.errorAlert.message}
+          </Alert>
 
-          <button type="button" className="login-btn" onClick={this.submitLogin.bind(this)}> Login </button>
+          <button type="button" className="login-btn" onClick={this.submitLogin}> Login </button>
         </div>
       </div>
 

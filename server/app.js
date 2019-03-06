@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const HttpStatus = require('http-status-codes');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/users');
 const itemRoutes = require('./api/routes/items');
@@ -19,7 +19,7 @@ mongoose.connect("mongodb://anupama:"
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.urlencoded({extended: false})); //only supports the parsing of simple bodies for urlencoded data
-app.use(bodyParser.json()); // wwill extract json datat and make them more readable
+app.use(bodyParser.json()); // will extract json data and make them more readable
 
 // Ensuring that we prevent CORS errors
 app.use((req, res, next) => {
@@ -47,13 +47,13 @@ app.use('/items', itemRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');
-  error.status = 404;
+  error.status = HttpStatus.NOT_FOUND;
   next(error);
 })
 
 // This middleware will handle errors from anywhere in the application
 app.use((error, req, res, next) => {
-  res.status(error.status || 500);
+  res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR);
   res.json({
     error: {
       message: [error.message, 'error inititated']

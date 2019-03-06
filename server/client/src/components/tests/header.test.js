@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { shallow } from 'enzyme';
-import Header from './Header';
+import Header from '../Shared/Header';
 import { shallowToJson } from 'enzyme-to-json';
 
 

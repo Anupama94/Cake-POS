@@ -1,25 +1,3 @@
-// var assert = require("assert"); // core module
-// var chai = require('chai');
-// var chaiHttp = require('chai-http');
-// var server = require('../app');
-// var should = chai.should();
-
-// chai.use(chaiHttp);
-
-
-// describe('Blobs', function() {
-//     it('should list ALL blobs on /blobs GET', function(done) {
-//         chai.request(server)
-//           .get('/users')
-//           .end(function(err, res){
-//             res.should.be.json;
-//             res.should.have.status(200);
-            
-//             done();
-//           });
-//       });
-    
-//   });
 
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
@@ -69,6 +47,7 @@ describe("Testing API calls for the resource 'user'", function () {
             { '../controllers/users': user })
 
         let app = proxyquire('../app', { './api/routes/users': userRoutes });
+        
         request(app).post('/users/login')
             .expect(HttpStatus.OK).end((err, res) => {
             should.not.exist(err);

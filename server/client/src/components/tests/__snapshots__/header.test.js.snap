@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render correctly 1`] = `
+<div>
+  <Navbar
+    color="navbar-dark bg-dark"
+    expand="md"
+    light={true}
+    tag="nav"
+  >
+    <NavbarBrand
+      href="/"
+      tag="a"
+    >
+      <h2
+        className="orangify"
+      >
+        Cake | POS
+      </h2>
+    </NavbarBrand>
+    <Nav
+      className="ml-auto"
+      navbar={true}
+      tag="ul"
+      vertical={false}
+    >
+      <NavItem
+        tag="li"
+      >
+        <Button
+          className="orangify"
+          color="secondary"
+          id="logout-btn"
+          onClick={[Function]}
+          tag="button"
+        >
+          Log Out
+        </Button>
+      </NavItem>
+    </Nav>
+  </Navbar>
+  <br />
+</div>
+`;

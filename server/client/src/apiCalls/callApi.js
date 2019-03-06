@@ -12,7 +12,7 @@ export const userLogin = (credentials) => {
                 if (result.status === HttpStatus.OK) {
                     apiConfig.authenticationToken = result.data.token;
                     apiConfig.userId = result.data.id;
-                    resolve();
+                    resolve(result);
                 }
             })
             .catch(err => {

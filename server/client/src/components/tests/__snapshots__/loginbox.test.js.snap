@@ -1,5 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginBox Component should render correctly 1`] = `null`;
-
-exports[`Menu Component should render correctly 1`] = `null`;
+exports[`LoginBox Component should render correctly 1`] = `
+<div
+  className="inner-container"
+>
+  <div
+    className="header"
+  >
+    Log In
+  </div>
+  <div
+    className="box"
+  >
+    <Form
+      tag="form"
+    >
+      <Col
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <FormGroup
+          tag="div"
+        >
+          <Label
+            tag="label"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            Username
+          </Label>
+          <Input
+            id="exampleEmail"
+            invalid={false}
+            name="email"
+            onChange={[Function]}
+            placeholder="myemail@email.com"
+            type="email"
+            valid={false}
+            value=""
+          />
+          <FormFeedback
+            invalid={true}
+            tag="div"
+          >
+            Uh oh! Looks like there is an issue with your email. Please input a correct email.
+          </FormFeedback>
+        </FormGroup>
+      </Col>
+      <Col
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <FormGroup
+          tag="div"
+        >
+          <Label
+            for="examplePassword"
+            tag="label"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            Password
+          </Label>
+          <Input
+            id="examplePassword"
+            invalid={false}
+            name="password"
+            onChange={[Function]}
+            placeholder="Password"
+            required={true}
+            type="password"
+            valid={false}
+            value=""
+          />
+          <FormFeedback
+            invalid={true}
+            tag="div"
+          >
+            *Password is required!
+          </FormFeedback>
+        </FormGroup>
+      </Col>
+    </Form>
+    <Alert
+      closeAriaLabel="Close"
+      color="danger"
+      fade={true}
+      isOpen={false}
+      tag="div"
+      transition={
+        Object {
+          "appear": true,
+          "baseClass": "fade",
+          "baseClassActive": "show",
+          "enter": true,
+          "exit": true,
+          "in": true,
+          "mountOnEnter": false,
+          "onEnter": [Function],
+          "onEntered": [Function],
+          "onEntering": [Function],
+          "onExit": [Function],
+          "onExited": [Function],
+          "onExiting": [Function],
+          "tag": "div",
+          "timeout": 150,
+          "unmountOnExit": true,
+        }
+      }
+    />
+    <button
+      className="login-btn"
+      onClick={[Function]}
+      type="button"
+    >
+       Login 
+    </button>
+  </div>
+</div>
+`;
