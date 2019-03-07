@@ -1,0 +1,29 @@
+795fbdec1743de9e3ada5cc26d3791c8
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _callApi = require("../../apiCalls/callApi");
+
+var _errorConstants = require("../apiCalls/errorConstants");
+
+var _httpStatusCodes = _interopRequireDefault(require("http-status-codes"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+describe("LoginBox Component", () => {
+  it("calls axios getCall and returns users", async () => {
+    _axios.default.post.mockImplementationOnce(() => Promise.resolve({
+      data: {
+        results: ["cute.js"]
+      }
+    }));
+
+    const login = await (0, _callApi.userLogin)({
+      email: "abcd@123.com",
+      password: "abc"
+    });
+    console.log(login);
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGxBcGkudGVzdC5qcyJdLCJuYW1lcyI6WyJkZXNjcmliZSIsIml0IiwibW9ja0F4aW9zIiwicG9zdCIsIm1vY2tJbXBsZW1lbnRhdGlvbk9uY2UiLCJQcm9taXNlIiwicmVzb2x2ZSIsImRhdGEiLCJyZXN1bHRzIiwibG9naW4iLCJlbWFpbCIsInBhc3N3b3JkIiwiY29uc29sZSIsImxvZyJdLCJtYXBwaW5ncyI6Ijs7OztBQUFBOztBQUNBOztBQUNBOztBQUNBOztBQUVBQSxRQUFRLENBQUMsb0JBQUQsRUFBdUIsTUFBTTtBQUduQ0MsRUFBQUEsRUFBRSxDQUFDLHVDQUFELEVBQTBDLFlBQVk7QUFDdERDLG1CQUFVQyxJQUFWLENBQWVDLHNCQUFmLENBQXNDLE1BQU1DLE9BQU8sQ0FBQ0MsT0FBUixDQUFnQjtBQUN4REMsTUFBQUEsSUFBSSxFQUFFO0FBQ0ZDLFFBQUFBLE9BQU8sRUFBRSxDQUFDLFNBQUQ7QUFEUDtBQURrRCxLQUFoQixDQUE1Qzs7QUFNQSxVQUFNQyxLQUFLLEdBQUcsTUFBTSx3QkFBVTtBQUFDQyxNQUFBQSxLQUFLLEVBQUUsY0FBUjtBQUF3QkMsTUFBQUEsUUFBUSxFQUFFO0FBQWxDLEtBQVYsQ0FBcEI7QUFDQUMsSUFBQUEsT0FBTyxDQUFDQyxHQUFSLENBQVlKLEtBQVo7QUFDRCxHQVRDLENBQUY7QUFXRCxDQWRPLENBQVIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB1c2VyTG9naW4gfSBmcm9tICcuLi8uLi9hcGlDYWxscy9jYWxsQXBpJztcbmltcG9ydCB7IGVycm9yIH0gZnJvbSAnLi4vYXBpQ2FsbHMvZXJyb3JDb25zdGFudHMnO1xuaW1wb3J0IEh0dHBTdGF0dXMgZnJvbSAnaHR0cC1zdGF0dXMtY29kZXMnO1xuaW1wb3J0IG1vY2tBeGlvcyBmcm9tICdheGlvcyc7XG5cbmRlc2NyaWJlKFwiTG9naW5Cb3ggQ29tcG9uZW50XCIsICgpID0+IHtcblxuXG4gIGl0KFwiY2FsbHMgYXhpb3MgZ2V0Q2FsbCBhbmQgcmV0dXJucyB1c2Vyc1wiLCBhc3luYyAoKSA9PiB7XG4gICAgbW9ja0F4aW9zLnBvc3QubW9ja0ltcGxlbWVudGF0aW9uT25jZSgoKSA9PiBQcm9taXNlLnJlc29sdmUoe1xuICAgICAgICBkYXRhOiB7XG4gICAgICAgICAgICByZXN1bHRzOiBbXCJjdXRlLmpzXCJdXG4gICAgICAgIH1cbiAgICB9KSk7XG5cbiAgICBjb25zdCBsb2dpbiA9IGF3YWl0IHVzZXJMb2dpbih7ZW1haWw6IFwiYWJjZEAxMjMuY29tXCIsIHBhc3N3b3JkOiBcImFiY1wifSk7XG4gICAgY29uc29sZS5sb2cobG9naW4pO1xuICB9KTtcblxufSk7XG4iXX0=

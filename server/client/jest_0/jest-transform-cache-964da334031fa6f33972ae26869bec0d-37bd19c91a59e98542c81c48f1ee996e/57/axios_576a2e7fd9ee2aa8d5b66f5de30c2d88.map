@@ -1,0 +1,1 @@
+{"version":3,"sources":["axios.js"],"names":["get","jest","fn","Promise","resolve","data"],"mappings":";;;;;;eAAe;AACXA,EAAAA,GAAG,EAAEC,IAAI,CAACC,EAAL,CAAQ,MAAMC,OAAO,CAACC,OAAR,CAAgB;AAACC,IAAAA,IAAI,EAAE;AAAP,GAAhB,CAAd;AADM,C","sourcesContent":["export default {\n    get: jest.fn(() => Promise.resolve({data: {}}))\n}"]}

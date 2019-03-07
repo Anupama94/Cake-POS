@@ -153,7 +153,6 @@ describe("Testing API calls for the resource 'item'", function () {
           res.body.items[1].category.should.be.equal("food");
 
 
-
           done();
       });
   });

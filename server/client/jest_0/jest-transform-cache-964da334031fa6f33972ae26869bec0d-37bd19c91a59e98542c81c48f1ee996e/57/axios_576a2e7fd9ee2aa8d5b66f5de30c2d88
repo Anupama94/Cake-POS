@@ -1,0 +1,14 @@
+54467c5f057af6db61294febcd088ddc
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  get: jest.fn(() => Promise.resolve({
+    data: {}
+  }))
+};
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImF4aW9zLmpzIl0sIm5hbWVzIjpbImdldCIsImplc3QiLCJmbiIsIlByb21pc2UiLCJyZXNvbHZlIiwiZGF0YSJdLCJtYXBwaW5ncyI6Ijs7Ozs7O2VBQWU7QUFDWEEsRUFBQUEsR0FBRyxFQUFFQyxJQUFJLENBQUNDLEVBQUwsQ0FBUSxNQUFNQyxPQUFPLENBQUNDLE9BQVIsQ0FBZ0I7QUFBQ0MsSUFBQUEsSUFBSSxFQUFFO0FBQVAsR0FBaEIsQ0FBZDtBQURNLEMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCB7XG4gICAgZ2V0OiBqZXN0LmZuKCgpID0+IFByb21pc2UucmVzb2x2ZSh7ZGF0YToge319KSlcbn0iXX0=

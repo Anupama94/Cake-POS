@@ -1,0 +1,43 @@
+949eaea8e9488f7f21d50b5253a13d8f
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _jestMockAxios = _interopRequireDefault(require("jest-mock-axios"));
+
+var _services = require("../../apiCalls/services");
+
+afterEach(() => {
+  // cleaning up the mess left behind the previous test
+  _jestMockAxios.default.reset();
+});
+it('UppercaseProxy should get data from the server and convert it to UPPERCASE', () => {
+  let catchFn = jest.fn(),
+      thenFn = jest.fn(() => console.log("GETS HERE")); // using the component, which should make a server response
+
+  (0, _services.postCall)("users/login", {
+    email: "abcd@123.com",
+    password: "abc"
+  }).then(thenFn).catch(catchFn); // since `post` method is a spy, we can check if the server request was correct
+  // a) the correct method was used (post)
+  // b) went to the correct web service URL ('/web-service-url/')
+  // c) if the payload was correct ('client is saying hello!')
+
+  expect(_jestMockAxios.default.post).toHaveBeenCalledWith("http://localhost:3001/users/login", {
+    email: "abcd@123.com",
+    password: "abc"
+  }); // simulating a server response
+
+  let responseObj = {
+    status: '200 OK!'
+  };
+
+  _jestMockAxios.default.mockResponse(responseObj); // checking the `then` spy has been called and if the
+  // response from the server was converted to upper case
+  // expect(thenFn).toHaveBeenCalledTimes(1);
+  // catch should not have been called
+
+
+  expect(catchFn).not.toHaveBeenCalled();
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlcnZpY2VzLnRlc3QuanMiXSwibmFtZXMiOlsiYWZ0ZXJFYWNoIiwibW9ja0F4aW9zIiwicmVzZXQiLCJpdCIsImNhdGNoRm4iLCJqZXN0IiwiZm4iLCJ0aGVuRm4iLCJjb25zb2xlIiwibG9nIiwiZW1haWwiLCJwYXNzd29yZCIsInRoZW4iLCJjYXRjaCIsImV4cGVjdCIsInBvc3QiLCJ0b0hhdmVCZWVuQ2FsbGVkV2l0aCIsInJlc3BvbnNlT2JqIiwic3RhdHVzIiwibW9ja1Jlc3BvbnNlIiwibm90IiwidG9IYXZlQmVlbkNhbGxlZCJdLCJtYXBwaW5ncyI6Ijs7OztBQUFBOztBQUNBOztBQUdBQSxTQUFTLENBQUMsTUFBTTtBQUNaO0FBQ0FDLHlCQUFVQyxLQUFWO0FBQ0gsQ0FIUSxDQUFUO0FBS0FDLEVBQUUsQ0FBQyw0RUFBRCxFQUErRSxNQUFNO0FBRW5GLE1BQUlDLE9BQU8sR0FBR0MsSUFBSSxDQUFDQyxFQUFMLEVBQWQ7QUFBQSxNQUNJQyxNQUFNLEdBQUdGLElBQUksQ0FBQ0MsRUFBTCxDQUFRLE1BQU1FLE9BQU8sQ0FBQ0MsR0FBUixDQUFZLFdBQVosQ0FBZCxDQURiLENBRm1GLENBS25GOztBQUdBLDBCQUFTLGFBQVQsRUFBd0I7QUFBQ0MsSUFBQUEsS0FBSyxFQUFFLGNBQVI7QUFBd0JDLElBQUFBLFFBQVEsRUFBRTtBQUFsQyxHQUF4QixFQUNLQyxJQURMLENBQ1VMLE1BRFYsRUFFS00sS0FGTCxDQUVXVCxPQUZYLEVBUm1GLENBWW5GO0FBQ0E7QUFDQTtBQUNBOztBQUNBVSxFQUFBQSxNQUFNLENBQUNiLHVCQUFVYyxJQUFYLENBQU4sQ0FBdUJDLG9CQUF2QixDQUE0QyxtQ0FBNUMsRUFBaUY7QUFBQ04sSUFBQUEsS0FBSyxFQUFFLGNBQVI7QUFBd0JDLElBQUFBLFFBQVEsRUFBRTtBQUFsQyxHQUFqRixFQWhCbUYsQ0FrQm5GOztBQUNBLE1BQUlNLFdBQVcsR0FBRztBQUFFQyxJQUFBQSxNQUFNLEVBQUU7QUFBVixHQUFsQjs7QUFDQWpCLHlCQUFVa0IsWUFBVixDQUF1QkYsV0FBdkIsRUFwQm1GLENBc0JuRjtBQUNBO0FBQ0Q7QUFFQzs7O0FBQ0FILEVBQUFBLE1BQU0sQ0FBQ1YsT0FBRCxDQUFOLENBQWdCZ0IsR0FBaEIsQ0FBb0JDLGdCQUFwQjtBQUNILENBNUJDLENBQUYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgbW9ja0F4aW9zIGZyb20gJ2plc3QtbW9jay1heGlvcyc7XG5pbXBvcnQgeyBwb3N0Q2FsbCB9IGZyb20gJy4uLy4uL2FwaUNhbGxzL3NlcnZpY2VzJztcblxuXG5hZnRlckVhY2goKCkgPT4ge1xuICAgIC8vIGNsZWFuaW5nIHVwIHRoZSBtZXNzIGxlZnQgYmVoaW5kIHRoZSBwcmV2aW91cyB0ZXN0XG4gICAgbW9ja0F4aW9zLnJlc2V0KCk7XG59KTtcblxuaXQoJ1VwcGVyY2FzZVByb3h5IHNob3VsZCBnZXQgZGF0YSBmcm9tIHRoZSBzZXJ2ZXIgYW5kIGNvbnZlcnQgaXQgdG8gVVBQRVJDQVNFJywgKCkgPT4ge1xuIFxuICAgIGxldCBjYXRjaEZuID0gamVzdC5mbigpLFxuICAgICAgICB0aGVuRm4gPSBqZXN0LmZuKCgpID0+IGNvbnNvbGUubG9nKFwiR0VUUyBIRVJFXCIpKTtcbiBcbiAgICAvLyB1c2luZyB0aGUgY29tcG9uZW50LCB3aGljaCBzaG91bGQgbWFrZSBhIHNlcnZlciByZXNwb25zZVxuICAgIFxuIFxuICAgIHBvc3RDYWxsKFwidXNlcnMvbG9naW5cIiwge2VtYWlsOiBcImFiY2RAMTIzLmNvbVwiLCBwYXNzd29yZDogXCJhYmNcIn0pXG4gICAgICAgIC50aGVuKHRoZW5GbilcbiAgICAgICAgLmNhdGNoKGNhdGNoRm4pO1xuIFxuICAgIC8vIHNpbmNlIGBwb3N0YCBtZXRob2QgaXMgYSBzcHksIHdlIGNhbiBjaGVjayBpZiB0aGUgc2VydmVyIHJlcXVlc3Qgd2FzIGNvcnJlY3RcbiAgICAvLyBhKSB0aGUgY29ycmVjdCBtZXRob2Qgd2FzIHVzZWQgKHBvc3QpXG4gICAgLy8gYikgd2VudCB0byB0aGUgY29ycmVjdCB3ZWIgc2VydmljZSBVUkwgKCcvd2ViLXNlcnZpY2UtdXJsLycpXG4gICAgLy8gYykgaWYgdGhlIHBheWxvYWQgd2FzIGNvcnJlY3QgKCdjbGllbnQgaXMgc2F5aW5nIGhlbGxvIScpXG4gICAgZXhwZWN0KG1vY2tBeGlvcy5wb3N0KS50b0hhdmVCZWVuQ2FsbGVkV2l0aChcImh0dHA6Ly9sb2NhbGhvc3Q6MzAwMS91c2Vycy9sb2dpblwiLCB7ZW1haWw6IFwiYWJjZEAxMjMuY29tXCIsIHBhc3N3b3JkOiBcImFiY1wifSk7XG4gXG4gICAgLy8gc2ltdWxhdGluZyBhIHNlcnZlciByZXNwb25zZVxuICAgIGxldCByZXNwb25zZU9iaiA9IHsgc3RhdHVzOiAnMjAwIE9LIScgfTtcbiAgICBtb2NrQXhpb3MubW9ja1Jlc3BvbnNlKHJlc3BvbnNlT2JqKTtcbiBcbiAgICAvLyBjaGVja2luZyB0aGUgYHRoZW5gIHNweSBoYXMgYmVlbiBjYWxsZWQgYW5kIGlmIHRoZVxuICAgIC8vIHJlc3BvbnNlIGZyb20gdGhlIHNlcnZlciB3YXMgY29udmVydGVkIHRvIHVwcGVyIGNhc2VcbiAgIC8vIGV4cGVjdCh0aGVuRm4pLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygxKTtcbiBcbiAgICAvLyBjYXRjaCBzaG91bGQgbm90IGhhdmUgYmVlbiBjYWxsZWRcbiAgICBleHBlY3QoY2F0Y2hGbikubm90LnRvSGF2ZUJlZW5DYWxsZWQoKTtcbn0pOyJdfQ==

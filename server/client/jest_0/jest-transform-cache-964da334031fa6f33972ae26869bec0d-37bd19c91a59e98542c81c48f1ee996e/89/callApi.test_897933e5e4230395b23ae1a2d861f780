@@ -1,0 +1,60 @@
+9a89b7123e1c9de9d10ff4ee19812abd
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _moxios = _interopRequireDefault(require("moxios"));
+
+var _sinon = _interopRequireDefault(require("sinon"));
+
+var _callApi = require("../../apiCalls/callApi");
+
+var _services = require("../../apiCalls/services");
+
+// import { userLogin } from '../../apiCalls/callApi';
+// import { error } from '../../apiCalls/errorConstants';
+// import HttpStatus from 'http-status-codes';
+// import mockAxios from 'axios';
+// describe("LoginBox Component", () => {
+//   it("calls axios getCall and returns users", async () => {
+//     mockAxios.post.mockImplementationOnce(() => Promise.resolve({
+//             status: HttpStatus.OK
+//     }));
+//     const login = userLogin({email: "abcd@123.com", password: "abc"})
+//     .then(response => {
+//         expect(mockAxios.post).toHaveBeenCalledTimes(0);
+//         expect(response.status).toBe(HttpStatus.OK);
+//         expect(mockAxios.post).toHaveBeenCalledWith(true);
+//     })
+//     .catch(err => {});
+//   });
+// });
+//jest.mock('../../apiCalls/services');
+describe('mocking axios requests', function () {
+  describe('across entire suite', function () {
+    it('calls axios getCall and returns users', () => {
+      jest.unmock('../../apiCalls/services');
+
+      const services = require('../../apiCalls/services');
+
+      services.postCall = _sinon.default.stub();
+      services.postCall.withArgs("users/login", {
+        email: "abcd@123.com",
+        password: "abc"
+      }).returns(Promise.resolve({
+        status: '200 OK'
+      }));
+      return (0, _callApi.userLogin)({
+        email: "abcd@123.com",
+        password: "abc"
+      }).then(response => {
+        expect(services.postCall).toHaveBeenCalledTimes(0);
+      }).catch(() => {});
+    });
+  });
+}); // export default {
+//     post: jest.fn((url, data) => Promise.resolve({response: {status: "200 OK"}}))
+// }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGxBcGkudGVzdC5qcyJdLCJuYW1lcyI6WyJkZXNjcmliZSIsIml0IiwiamVzdCIsInVubW9jayIsInNlcnZpY2VzIiwicmVxdWlyZSIsInBvc3RDYWxsIiwic2lub24iLCJzdHViIiwid2l0aEFyZ3MiLCJlbWFpbCIsInBhc3N3b3JkIiwicmV0dXJucyIsIlByb21pc2UiLCJyZXNvbHZlIiwic3RhdHVzIiwidGhlbiIsInJlc3BvbnNlIiwiZXhwZWN0IiwidG9IYXZlQmVlbkNhbGxlZFRpbWVzIiwiY2F0Y2giXSwibWFwcGluZ3MiOiI7Ozs7QUE2QkE7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBQ0E7O0FBakNBO0FBQ0E7QUFDQTtBQUNBO0FBRUE7QUFHQTtBQUNBO0FBRUE7QUFFQTtBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBR0E7QUFFQTtBQVVBO0FBQ0FBLFFBQVEsQ0FBQyx3QkFBRCxFQUEyQixZQUFZO0FBRTNDQSxFQUFBQSxRQUFRLENBQUMscUJBQUQsRUFBd0IsWUFBWTtBQUV4Q0MsSUFBQUEsRUFBRSxDQUFDLHVDQUFELEVBQTBDLE1BQU07QUFDOUNDLE1BQUFBLElBQUksQ0FBQ0MsTUFBTCxDQUFZLHlCQUFaOztBQUNBLFlBQU1DLFFBQVEsR0FBR0MsT0FBTyxDQUFDLHlCQUFELENBQXhCOztBQUNBRCxNQUFBQSxRQUFRLENBQUNFLFFBQVQsR0FBb0JDLGVBQU1DLElBQU4sRUFBcEI7QUFDQUosTUFBQUEsUUFBUSxDQUFDRSxRQUFULENBQWtCRyxRQUFsQixDQUEyQixhQUEzQixFQUEwQztBQUFDQyxRQUFBQSxLQUFLLEVBQUUsY0FBUjtBQUF3QkMsUUFBQUEsUUFBUSxFQUFFO0FBQWxDLE9BQTFDLEVBQW9GQyxPQUFwRixDQUE0RkMsT0FBTyxDQUFDQyxPQUFSLENBQWdCO0FBQUNDLFFBQUFBLE1BQU0sRUFBRTtBQUFULE9BQWhCLENBQTVGO0FBRUEsYUFBTyx3QkFBVTtBQUFDTCxRQUFBQSxLQUFLLEVBQUUsY0FBUjtBQUF3QkMsUUFBQUEsUUFBUSxFQUFFO0FBQWxDLE9BQVYsRUFDTkssSUFETSxDQUNEQyxRQUFRLElBQUk7QUFDZEMsUUFBQUEsTUFBTSxDQUFDZCxRQUFRLENBQUNFLFFBQVYsQ0FBTixDQUEwQmEscUJBQTFCLENBQWdELENBQWhEO0FBQ0gsT0FITSxFQUlOQyxLQUpNLENBSUEsTUFBTSxDQUFFLENBSlIsQ0FBUDtBQUtDLEtBWEgsQ0FBRjtBQWNDLEdBaEJHLENBQVI7QUFpQkMsQ0FuQkcsQ0FBUixDLENBdUJBO0FBQ0E7QUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi8vIGltcG9ydCB7IHVzZXJMb2dpbiB9IGZyb20gJy4uLy4uL2FwaUNhbGxzL2NhbGxBcGknO1xuLy8gaW1wb3J0IHsgZXJyb3IgfSBmcm9tICcuLi8uLi9hcGlDYWxscy9lcnJvckNvbnN0YW50cyc7XG4vLyBpbXBvcnQgSHR0cFN0YXR1cyBmcm9tICdodHRwLXN0YXR1cy1jb2Rlcyc7XG4vLyBpbXBvcnQgbW9ja0F4aW9zIGZyb20gJ2F4aW9zJztcblxuLy8gZGVzY3JpYmUoXCJMb2dpbkJveCBDb21wb25lbnRcIiwgKCkgPT4ge1xuXG5cbi8vICAgaXQoXCJjYWxscyBheGlvcyBnZXRDYWxsIGFuZCByZXR1cm5zIHVzZXJzXCIsIGFzeW5jICgpID0+IHtcbi8vICAgICBtb2NrQXhpb3MucG9zdC5tb2NrSW1wbGVtZW50YXRpb25PbmNlKCgpID0+IFByb21pc2UucmVzb2x2ZSh7XG5cbi8vICAgICAgICAgICAgIHN0YXR1czogSHR0cFN0YXR1cy5PS1xuXG4vLyAgICAgfSkpO1xuXG4vLyAgICAgY29uc3QgbG9naW4gPSB1c2VyTG9naW4oe2VtYWlsOiBcImFiY2RAMTIzLmNvbVwiLCBwYXNzd29yZDogXCJhYmNcIn0pXG4vLyAgICAgLnRoZW4ocmVzcG9uc2UgPT4ge1xuLy8gICAgICAgICBleHBlY3QobW9ja0F4aW9zLnBvc3QpLnRvSGF2ZUJlZW5DYWxsZWRUaW1lcygwKTtcbi8vICAgICAgICAgZXhwZWN0KHJlc3BvbnNlLnN0YXR1cykudG9CZShIdHRwU3RhdHVzLk9LKTtcbi8vICAgICAgICAgZXhwZWN0KG1vY2tBeGlvcy5wb3N0KS50b0hhdmVCZWVuQ2FsbGVkV2l0aCh0cnVlKTtcbi8vICAgICB9KVxuLy8gICAgIC5jYXRjaChlcnIgPT4ge30pO1xuXG5cbi8vICAgfSk7XG5cbi8vIH0pO1xuXG5cbmltcG9ydCBheGlvcyBmcm9tICdheGlvcyc7XG5pbXBvcnQgbW94aW9zIGZyb20gJ21veGlvcyc7XG5pbXBvcnQgc2lub24gZnJvbSAnc2lub24nO1xuaW1wb3J0IHsgdXNlckxvZ2luIH0gZnJvbSAnLi4vLi4vYXBpQ2FsbHMvY2FsbEFwaSc7XG5pbXBvcnQgeyBwb3N0Q2FsbCB9IGZyb20gJy4uLy4uL2FwaUNhbGxzL3NlcnZpY2VzJztcblxuXG4vL2plc3QubW9jaygnLi4vLi4vYXBpQ2FsbHMvc2VydmljZXMnKTtcbmRlc2NyaWJlKCdtb2NraW5nIGF4aW9zIHJlcXVlc3RzJywgZnVuY3Rpb24gKCkge1xuXG4gICAgZGVzY3JpYmUoJ2Fjcm9zcyBlbnRpcmUgc3VpdGUnLCBmdW5jdGlvbiAoKSB7XG5cbiAgICAgICAgaXQoJ2NhbGxzIGF4aW9zIGdldENhbGwgYW5kIHJldHVybnMgdXNlcnMnLCAoKSA9PiB7XG4gICAgICAgICAgICBqZXN0LnVubW9jaygnLi4vLi4vYXBpQ2FsbHMvc2VydmljZXMnKTtcbiAgICAgICAgICAgIGNvbnN0IHNlcnZpY2VzID0gcmVxdWlyZSgnLi4vLi4vYXBpQ2FsbHMvc2VydmljZXMnKTtcbiAgICAgICAgICAgIHNlcnZpY2VzLnBvc3RDYWxsID0gc2lub24uc3R1YigpO1xuICAgICAgICAgICAgc2VydmljZXMucG9zdENhbGwud2l0aEFyZ3MoXCJ1c2Vycy9sb2dpblwiLCB7ZW1haWw6IFwiYWJjZEAxMjMuY29tXCIsIHBhc3N3b3JkOiBcImFiY1wifSkucmV0dXJucyhQcm9taXNlLnJlc29sdmUoe3N0YXR1czogJzIwMCBPSyd9KSk7XG5cbiAgICAgICAgICAgIHJldHVybiB1c2VyTG9naW4oe2VtYWlsOiBcImFiY2RAMTIzLmNvbVwiLCBwYXNzd29yZDogXCJhYmNcIn0pXG4gICAgICAgICAgICAudGhlbihyZXNwb25zZSA9PiB7XG4gICAgICAgICAgICAgICAgZXhwZWN0KHNlcnZpY2VzLnBvc3RDYWxsKS50b0hhdmVCZWVuQ2FsbGVkVGltZXMoMCk7XG4gICAgICAgICAgICB9KVxuICAgICAgICAgICAgLmNhdGNoKCgpID0+IHt9KTtcbiAgICAgICAgICAgIH0pXG5cblxuICAgICAgICB9KVxuICAgIH0pXG5cblxuXG4vLyBleHBvcnQgZGVmYXVsdCB7XG4vLyAgICAgcG9zdDogamVzdC5mbigodXJsLCBkYXRhKSA9PiBQcm9taXNlLnJlc29sdmUoe3Jlc3BvbnNlOiB7c3RhdHVzOiBcIjIwMCBPS1wifX0pKVxuLy8gfVxuIl19

@@ -40,6 +40,9 @@
   "devDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
-    "enzyme-to-json": "^3.3.5"
+    "enzyme-to-json": "^3.3.5",
+    "jest-mock-axios": "^2.1.11",
+    "moxios": "^0.4.0",
+    "sinon": "^7.2.7"
   }
 }

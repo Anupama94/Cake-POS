@@ -1,0 +1,16 @@
+8e9b53ec61b9cdf875c7d41063ab4a20
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  post: jest.fn((url, data) => Promise.resolve({
+    response: {
+      status: "200 OK"
+    }
+  }))
+};
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImF4aW9zLmpzIl0sIm5hbWVzIjpbInBvc3QiLCJqZXN0IiwiZm4iLCJ1cmwiLCJkYXRhIiwiUHJvbWlzZSIsInJlc29sdmUiLCJyZXNwb25zZSIsInN0YXR1cyJdLCJtYXBwaW5ncyI6Ijs7Ozs7O2VBQWU7QUFDWEEsRUFBQUEsSUFBSSxFQUFFQyxJQUFJLENBQUNDLEVBQUwsQ0FBUSxDQUFDQyxHQUFELEVBQU1DLElBQU4sS0FBZUMsT0FBTyxDQUFDQyxPQUFSLENBQWdCO0FBQUNDLElBQUFBLFFBQVEsRUFBRTtBQUFDQyxNQUFBQSxNQUFNLEVBQUU7QUFBVDtBQUFYLEdBQWhCLENBQXZCO0FBREssQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IHtcbiAgICBwb3N0OiBqZXN0LmZuKCh1cmwsIGRhdGEpID0+IFByb21pc2UucmVzb2x2ZSh7cmVzcG9uc2U6IHtzdGF0dXM6IFwiMjAwIE9LXCJ9fSkpXG59Il19

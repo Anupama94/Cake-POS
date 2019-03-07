@@ -1,0 +1,19 @@
+a64d27a56c0a86a4a32060941dc02104
+"use strict";
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _callApi = require("../../apiCalls/callApi");
+
+var _errorConstants = require("../apiCalls/errorConstants");
+
+var _httpStatusCodes = _interopRequireDefault(require("http-status-codes"));
+
+var _axios = _interopRequireDefault(require("axios"));
+
+describe("LoginBox Component", () => {
+  it("calls axios getCall and returns users", async () => {
+    expect(shallowToJson(wrapper)).toMatchSnapshot();
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGxBcGkudGVzdC5qcyJdLCJuYW1lcyI6WyJkZXNjcmliZSIsIml0IiwiZXhwZWN0Iiwic2hhbGxvd1RvSnNvbiIsIndyYXBwZXIiLCJ0b01hdGNoU25hcHNob3QiXSwibWFwcGluZ3MiOiI7Ozs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFFQUEsUUFBUSxDQUFDLG9CQUFELEVBQXVCLE1BQU07QUFHbkNDLEVBQUFBLEVBQUUsQ0FBQyx1Q0FBRCxFQUEwQyxZQUFZO0FBQ3REQyxJQUFBQSxNQUFNLENBQUNDLGFBQWEsQ0FBQ0MsT0FBRCxDQUFkLENBQU4sQ0FBK0JDLGVBQS9CO0FBQ0QsR0FGQyxDQUFGO0FBSUQsQ0FQTyxDQUFSIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlckxvZ2luIH0gZnJvbSAnLi4vLi4vYXBpQ2FsbHMvY2FsbEFwaSc7XG5pbXBvcnQgeyBlcnJvciB9IGZyb20gJy4uL2FwaUNhbGxzL2Vycm9yQ29uc3RhbnRzJztcbmltcG9ydCBIdHRwU3RhdHVzIGZyb20gJ2h0dHAtc3RhdHVzLWNvZGVzJztcbmltcG9ydCBtb2NrQXhpb3MgZnJvbSAnYXhpb3MnO1xuXG5kZXNjcmliZShcIkxvZ2luQm94IENvbXBvbmVudFwiLCAoKSA9PiB7XG5cblxuICBpdChcImNhbGxzIGF4aW9zIGdldENhbGwgYW5kIHJldHVybnMgdXNlcnNcIiwgYXN5bmMgKCkgPT4ge1xuICAgIGV4cGVjdChzaGFsbG93VG9Kc29uKHdyYXBwZXIpKS50b01hdGNoU25hcHNob3QoKTtcbiAgfSk7XG5cbn0pO1xuIl19

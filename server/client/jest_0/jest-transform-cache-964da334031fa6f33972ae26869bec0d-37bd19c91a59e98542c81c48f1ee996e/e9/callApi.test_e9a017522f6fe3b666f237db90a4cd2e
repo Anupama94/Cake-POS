@@ -1,0 +1,60 @@
+8821557e5ce4137db7c2c0f3b4d85641
+"use strict";
+
+// import { userLogin } from '../../apiCalls/callApi';
+// import { error } from '../../apiCalls/errorConstants';
+// import HttpStatus from 'http-status-codes';
+// import mockAxios from 'axios';
+// describe("LoginBox Component", () => {
+//   it("calls axios getCall and returns users", async () => {
+//     mockAxios.post.mockImplementationOnce(() => Promise.resolve({
+//             status: HttpStatus.OK
+//     }));
+//     const login = userLogin({email: "abcd@123.com", password: "abc"})
+//     .then(response => {
+//         expect(mockAxios.post).toHaveBeenCalledTimes(0);
+//         expect(response.status).toBe(HttpStatus.OK);
+//         expect(mockAxios.post).toHaveBeenCalledWith(true);
+//     })
+//     .catch(err => {});
+//   });
+// });
+jest.mock('../../apiCalls/services', () => ({
+  postCall: jest.fn(() => Promise.resolve({
+    status: '200 OK'
+  }))
+}));
+
+var _interopRequireDefault = require("/home/anupamaa/Desktop/Training/pos/server/client/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _axios = _interopRequireDefault(require("axios"));
+
+var _moxios = _interopRequireDefault(require("moxios"));
+
+var _sinon = _interopRequireDefault(require("sinon"));
+
+var _callApi = require("../../apiCalls/callApi");
+
+var _services = require("../../apiCalls/services");
+
+describe('mocking axios requests', function () {
+  describe('across entire suite', function () {
+    it('calls axios getCall and returns users', () => {
+      //   describe('Akamai getImages', () => {
+      //     it('should make a request when we get images', () => {
+      //       getImages();
+      //       expect(makeRequest).toHaveBeenCalledWith('/akamai', 'GET');
+      //     });
+      //   });
+      (0, _callApi.userLogin)({
+        email: "abcd@123.com",
+        password: "abc"
+      }).then(response => {
+        expect(_services.postCall).toHaveBeenCalledWith('users/login', {});
+      }); // Elsewhere in your code axios.get('/users/search', { params: { q: 'flintstone' } }) is called
+    });
+  });
+}); // export default {
+//     post: jest.fn((url, data) => Promise.resolve({response: {status: "200 OK"}}))
+// }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNhbGxBcGkudGVzdC5qcyJdLCJuYW1lcyI6WyJqZXN0IiwibW9jayIsInBvc3RDYWxsIiwiZm4iLCJQcm9taXNlIiwicmVzb2x2ZSIsInN0YXR1cyIsImRlc2NyaWJlIiwiaXQiLCJlbWFpbCIsInBhc3N3b3JkIiwidGhlbiIsInJlc3BvbnNlIiwiZXhwZWN0IiwidG9IYXZlQmVlbkNhbGxlZFdpdGgiXSwibWFwcGluZ3MiOiI7O0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUdBO0FBQ0E7QUFFQTtBQUVBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFHQTtBQUVBO0FBU0FBLElBQUksQ0FBQ0MsSUFBTCxDQUFVLHlCQUFWLEVBQXFDLE9BQU87QUFDeENDLEVBQUFBLFFBQVEsRUFBRUYsSUFBSSxDQUFDRyxFQUFMLENBQVEsTUFBTUMsT0FBTyxDQUFDQyxPQUFSLENBQWdCO0FBQUVDLElBQUFBLE1BQU0sRUFBRTtBQUFWLEdBQWhCLENBQWQ7QUFEOEIsQ0FBUCxDQUFyQzs7OztBQU5BOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQU1BQyxRQUFRLENBQUMsd0JBQUQsRUFBMkIsWUFBWTtBQUUzQ0EsRUFBQUEsUUFBUSxDQUFDLHFCQUFELEVBQXdCLFlBQVk7QUFFMUNDLElBQUFBLEVBQUUsQ0FBQyx1Q0FBRCxFQUEwQyxNQUFNO0FBR2hEO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLDhCQUFVO0FBQUNDLFFBQUFBLEtBQUssRUFBRSxjQUFSO0FBQXdCQyxRQUFBQSxRQUFRLEVBQUU7QUFBbEMsT0FBVixFQUNDQyxJQURELENBQ01DLFFBQVEsSUFBSTtBQUNkQyxRQUFBQSxNQUFNLENBQUNYLGtCQUFELENBQU4sQ0FBaUJZLG9CQUFqQixDQUFzQyxhQUF0QyxFQUFxRCxFQUFyRDtBQUNILE9BSEQsRUFUZ0QsQ0FjaEQ7QUFHRCxLQWpCQyxDQUFGO0FBa0JELEdBcEJPLENBQVI7QUFxQkgsQ0F2Qk8sQ0FBUixDLENBMEJBO0FBQ0E7QUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi8vIGltcG9ydCB7IHVzZXJMb2dpbiB9IGZyb20gJy4uLy4uL2FwaUNhbGxzL2NhbGxBcGknO1xuLy8gaW1wb3J0IHsgZXJyb3IgfSBmcm9tICcuLi8uLi9hcGlDYWxscy9lcnJvckNvbnN0YW50cyc7XG4vLyBpbXBvcnQgSHR0cFN0YXR1cyBmcm9tICdodHRwLXN0YXR1cy1jb2Rlcyc7XG4vLyBpbXBvcnQgbW9ja0F4aW9zIGZyb20gJ2F4aW9zJztcblxuLy8gZGVzY3JpYmUoXCJMb2dpbkJveCBDb21wb25lbnRcIiwgKCkgPT4ge1xuXG5cbi8vICAgaXQoXCJjYWxscyBheGlvcyBnZXRDYWxsIGFuZCByZXR1cm5zIHVzZXJzXCIsIGFzeW5jICgpID0+IHtcbi8vICAgICBtb2NrQXhpb3MucG9zdC5tb2NrSW1wbGVtZW50YXRpb25PbmNlKCgpID0+IFByb21pc2UucmVzb2x2ZSh7XG4gICAgICAgIFxuLy8gICAgICAgICAgICAgc3RhdHVzOiBIdHRwU3RhdHVzLk9LXG4gICAgICAgIFxuLy8gICAgIH0pKTtcblxuLy8gICAgIGNvbnN0IGxvZ2luID0gdXNlckxvZ2luKHtlbWFpbDogXCJhYmNkQDEyMy5jb21cIiwgcGFzc3dvcmQ6IFwiYWJjXCJ9KVxuLy8gICAgIC50aGVuKHJlc3BvbnNlID0+IHtcbi8vICAgICAgICAgZXhwZWN0KG1vY2tBeGlvcy5wb3N0KS50b0hhdmVCZWVuQ2FsbGVkVGltZXMoMCk7XG4vLyAgICAgICAgIGV4cGVjdChyZXNwb25zZS5zdGF0dXMpLnRvQmUoSHR0cFN0YXR1cy5PSyk7XG4vLyAgICAgICAgIGV4cGVjdChtb2NrQXhpb3MucG9zdCkudG9IYXZlQmVlbkNhbGxlZFdpdGgodHJ1ZSk7XG4vLyAgICAgfSlcbi8vICAgICAuY2F0Y2goZXJyID0+IHt9KTtcbiAgIFxuICAgIFxuLy8gICB9KTtcblxuLy8gfSk7XG5cblxuaW1wb3J0IGF4aW9zIGZyb20gJ2F4aW9zJztcbmltcG9ydCBtb3hpb3MgZnJvbSAnbW94aW9zJztcbmltcG9ydCBzaW5vbiBmcm9tICdzaW5vbic7XG5pbXBvcnQgeyB1c2VyTG9naW4gfSBmcm9tICcuLi8uLi9hcGlDYWxscy9jYWxsQXBpJztcbmltcG9ydCB7IHBvc3RDYWxsIH0gZnJvbSAnLi4vLi4vYXBpQ2FsbHMvc2VydmljZXMnO1xuXG5qZXN0Lm1vY2soJy4uLy4uL2FwaUNhbGxzL3NlcnZpY2VzJywgKCkgPT4gKHtcbiAgICBwb3N0Q2FsbDogamVzdC5mbigoKSA9PiBQcm9taXNlLnJlc29sdmUoeyBzdGF0dXM6ICcyMDAgT0snIH0pKVxuICB9KSk7XG5cbmRlc2NyaWJlKCdtb2NraW5nIGF4aW9zIHJlcXVlc3RzJywgZnVuY3Rpb24gKCkge1xuXG4gICAgZGVzY3JpYmUoJ2Fjcm9zcyBlbnRpcmUgc3VpdGUnLCBmdW5jdGlvbiAoKSB7XG4gIFxuICAgICAgaXQoJ2NhbGxzIGF4aW9zIGdldENhbGwgYW5kIHJldHVybnMgdXNlcnMnLCAoKSA9PiB7XG4gICAgICAgIFxuICAgICAgICAgIFxuICAgICAgICAvLyAgIGRlc2NyaWJlKCdBa2FtYWkgZ2V0SW1hZ2VzJywgKCkgPT4ge1xuICAgICAgICAvLyAgICAgaXQoJ3Nob3VsZCBtYWtlIGEgcmVxdWVzdCB3aGVuIHdlIGdldCBpbWFnZXMnLCAoKSA9PiB7XG4gICAgICAgIC8vICAgICAgIGdldEltYWdlcygpO1xuICAgICAgICAvLyAgICAgICBleHBlY3QobWFrZVJlcXVlc3QpLnRvSGF2ZUJlZW5DYWxsZWRXaXRoKCcvYWthbWFpJywgJ0dFVCcpO1xuICAgICAgICAvLyAgICAgfSk7XG4gICAgICAgIC8vICAgfSk7XG4gICAgICAgIHVzZXJMb2dpbih7ZW1haWw6IFwiYWJjZEAxMjMuY29tXCIsIHBhc3N3b3JkOiBcImFiY1wifSlcbiAgICAgICAgLnRoZW4ocmVzcG9uc2UgPT4ge1xuICAgICAgICAgICAgZXhwZWN0KHBvc3RDYWxsKS50b0hhdmVCZWVuQ2FsbGVkV2l0aCgndXNlcnMvbG9naW4nLCB7fSk7XG4gICAgICAgIH0pXG4gIFxuICAgICAgICAvLyBFbHNld2hlcmUgaW4geW91ciBjb2RlIGF4aW9zLmdldCgnL3VzZXJzL3NlYXJjaCcsIHsgcGFyYW1zOiB7IHE6ICdmbGludHN0b25lJyB9IH0pIGlzIGNhbGxlZFxuICBcbiAgICAgICAgXG4gICAgICB9KVxuICAgIH0pXG59KSAgXG5cblxuLy8gZXhwb3J0IGRlZmF1bHQge1xuLy8gICAgIHBvc3Q6IGplc3QuZm4oKHVybCwgZGF0YSkgPT4gUHJvbWlzZS5yZXNvbHZlKHtyZXNwb25zZToge3N0YXR1czogXCIyMDAgT0tcIn19KSlcbi8vIH1cbiJdfQ==
