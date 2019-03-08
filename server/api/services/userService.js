@@ -12,6 +12,7 @@ exports.getUser = function(email) {
     return User.find(email)
         .exec()
         .then(returnedUser => {
+            console.log(returnedUser);
             return returnedUser
         })
         .catch(err => {

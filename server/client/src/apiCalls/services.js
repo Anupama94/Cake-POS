@@ -34,7 +34,7 @@ export const postCall = (url, mydata) => {
 
 
 export const authenticatedGetCall = (url) => {
-    const requestHeader = { headers: { "Authorization": "Bearer " + apiConfig.authenticationToken } };
+    let requestHeader = { headers: { "Authorization": "Bearer " + apiConfig.authenticationToken } };
 
     return new Promise((resolve, reject) => {
         let callingUrl = baseUrl + url;
@@ -62,6 +62,7 @@ export const authenticatedGetCall = (url) => {
 export const putCall = (url, updateOps) => {
     return new Promise((resolve, reject) => {
         let callingUrl = baseUrl + url;
+        let requestHeader = { headers: { "Authorization": "Bearer " + apiConfig.authenticationToken } };
         axios.put(callingUrl, updateOps)
             .then(response => {
                 if (response.status === HttpStatus.OK || response.status === HttpStatus.NO_CONTENT || response.status === HttpStatus.CREATED) {

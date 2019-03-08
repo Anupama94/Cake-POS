@@ -4,6 +4,9 @@ const should = require('should');
 const HttpStatus = require('http-status-codes');
 const request = require('supertest');
 const ErrorConstants = require('../api/errorConstants');
+const sinonStubPromise = require('sinon-stub-promise');
+sinonStubPromise(sinon);
+
 
 
 
@@ -11,20 +14,28 @@ const ErrorConstants = require('../api/errorConstants');
 describe("Testing API calls for the resource 'order'", function () {
     let sandbox = null;
 
+    before(function () {
+        sandbox = sinon.sandbox.create();
+        CheckAuth = require('../api/middleware/checkAuth');
+        sinon.stub(CheckAuth, 'authenticate')
+            .callsFake(function(req, res, next) {
+                return next();
+            });
+    });
+
     afterEach(function () {
         sandbox.restore();
 
     });
 
-    before(function () {
-        sandbox = sinon.sandbox.create();
-    });
+
 
     it("should return an order for given order id", function (done) {
         let orderServiceMock = {
             getOrderById: function () {
             }
         };
+
 
         let mockOrder = sandbox.stub(orderServiceMock, 'getOrderById');
 
@@ -33,12 +44,16 @@ describe("Testing API calls for the resource 'order'", function () {
             data: 'test data'
         }));
 
-        let order = proxyquire('../api/controllers/orders',
-            { '../services/orderService': orderServiceMock })
-        let orderRoutes = proxyquire('../api/routes/orders',
-            { '../controllers/orders': order })
 
-        let app = proxyquire('../app', { './api/routes/orders': orderRoutes });
+        
+
+        let order = proxyquire('../api/controllers/orders',
+            { '../services/orderService': orderServiceMock });
+
+        let orderRoutes = proxyquire('../api/routes/orders',
+            { '../controllers/orders': order });
+
+        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes });
 
         request(app).get('/orders/5c63a24d45a37036e8c92cf7')
             .expect(HttpStatus.OK).end((err, res) => {
@@ -384,11 +399,6 @@ describe("Testing API calls for the resource 'order'", function () {
             done();
         });
     });
-
-
-
-
-
 
 
 })

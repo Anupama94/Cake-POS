@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const checkAuth = require('../middleware/checkAuth');
+const CheckAuth = require('../middleware/checkAuth');
 const OrderController = require('../controllers/orders');
 
-router.get('/', OrderController.ordersGetAll);
+router.get('/', CheckAuth.authenticate, OrderController.ordersGetAll);
 
-router.get('/:orderId', OrderController.ordersGetOrder);
+router.get('/:orderId', CheckAuth.authenticate, OrderController.ordersGetOrder);
 
-router.get('/all/:userId', OrderController.ordersGetByUserId);
+router.get('/all/:userId', CheckAuth.authenticate, OrderController.ordersGetByUserId);
     
 router.put('/:orderId', OrderController.ordersUpdateOrder);
 
