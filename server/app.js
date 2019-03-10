@@ -1,22 +1,24 @@
 const express = require('express');
 const app = express();
+global.config = require('./config/system-config.json');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
 const HttpStatus = require('http-status-codes');
-const orderRoutes = require('./api/routes/orders');
-const userRoutes = require('./api/routes/users');
-const itemRoutes = require('./api/routes/items');
+const orderRoutes = require('./api/routes/orderRoute');
+const userRoutes = require('./api/routes/userRoute');
+const itemRoutes = require('./api/routes/itemRoute');
 
-mongoose.connect("mongodb://anupama:"
-   + process.env.MONGO_ATLAS_PW + 
-  "@cluster0-shard-00-00-h9bxn.mongodb.net:27017,cluster0-shard-00-01-h9bxn.mongodb.net:27017,cluster0-shard-00-02-h9bxn.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
-  {
-    useMongoClient: true
-  }, function(err, db) {
-    // handle database failure error
-  }
-);
-mongoose.Promise = global.Promise;
+
+// mongoose.connect("mongodb://anupama:"
+//    + process.env.MONGO_ATLAS_PW +
+//   "@cluster0-shard-00-00-h9bxn.mongodb.net:27017,cluster0-shard-00-01-h9bxn.mongodb.net:27017,cluster0-shard-00-02-h9bxn.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true",
+//   {
+//     useMongoClient: true
+//   }, function(err, db) {
+//     // handle database failure error
+//   }
+// );
+// mongoose.Promise = global.Promise;
 
 app.use(bodyParser.urlencoded({extended: false})); //only supports the parsing of simple bodies for urlencoded data
 app.use(bodyParser.json()); // will extract json data and make them more readable

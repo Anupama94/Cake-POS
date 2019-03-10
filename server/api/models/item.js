@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+require('../db/connect');
 
 const itemSchema = mongoose.Schema({
     _id: mongoose.Types.ObjectId,

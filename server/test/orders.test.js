@@ -4,20 +4,18 @@ const should = require('should');
 const HttpStatus = require('http-status-codes');
 const request = require('supertest');
 const ErrorConstants = require('../api/errorConstants');
-const sinonStubPromise = require('sinon-stub-promise');
-sinonStubPromise(sinon);
-
-
-
 
 
 describe("Testing API calls for the resource 'order'", function () {
     let sandbox = null;
+    let globalConfigMock;
 
-    before(function () {
+    beforeEach(function () {
         sandbox = sinon.sandbox.create();
+        globalConfigMock = Object.assign({}, global.config);
+        global.config = { mongodb: {connectionString: ''}};
         CheckAuth = require('../api/middleware/checkAuth');
-        sinon.stub(CheckAuth, 'authenticate')
+        checkAuthStub = sinon.stub(CheckAuth, 'authenticate')
             .callsFake(function(req, res, next) {
                 return next();
             });
@@ -25,6 +23,8 @@ describe("Testing API calls for the resource 'order'", function () {
 
     afterEach(function () {
         sandbox.restore();
+        checkAuthStub.restore();
+        global.config = globalConfigMock;
 
     });
 
@@ -47,13 +47,13 @@ describe("Testing API calls for the resource 'order'", function () {
 
         
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             { '../services/orderService': orderServiceMock });
 
-        let orderRoutes = proxyquire('../api/routes/orders',
-            { '../controllers/orders': order });
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            { '../controllers/orderController': order });
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes });
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes });
 
         request(app).get('/orders/5c63a24d45a37036e8c92cf7')
             .expect(HttpStatus.OK).end((err, res) => {
@@ -79,12 +79,12 @@ describe("Testing API calls for the resource 'order'", function () {
             data: null
         }));
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             { '../services/orderService': orderServiceMock })
-        let orderRoutes = proxyquire('../api/routes/orders',
-            { '../controllers/orders': order })
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            { '../controllers/orderController': order })
 
-        let app = proxyquire('../app', { './api/routes/orders': orderRoutes });
+        let app = proxyquire('../app', { './api/routes/orderRoute': orderRoutes });
 
         request(app).get('/orders/5c63a24d45a37036e8c92cf7')
             .expect(HttpStatus.NOT_FOUND).end((err, res) => {
@@ -108,12 +108,12 @@ describe("Testing API calls for the resource 'order'", function () {
             data: {err: {}}
         }));
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             { '../services/orderService': orderServiceMock })
-        let orderRoutes = proxyquire('../api/routes/orders',
-            { '../controllers/orders': order })
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            { '../controllers/orderController': order })
 
-        let app = proxyquire('../app', { './api/routes/orders': orderRoutes });
+        let app = proxyquire('../app', { './api/routes/orderRoute': orderRoutes });
 
         request(app).get('/orders/5c63a24d45a37036e8c92cf7')
             .expect(HttpStatus.INTERNAL_SERVER_ERROR).end((err, res) => {
@@ -194,12 +194,12 @@ describe("Testing API calls for the resource 'order'", function () {
             })
         );
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             {'../services/orderService': orderServiceMock});
-        let orderRoutes = proxyquire('../api/routes/orders',
-            {'../controllers/orders': order});
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            {'../controllers/orderController': order});
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes});
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes});
         request(app).get('/orders')
             .expect(HttpStatus.OK).end((err, res) => {
             should.not.exist(err);
@@ -234,12 +234,12 @@ describe("Testing API calls for the resource 'order'", function () {
             code: ErrorConstants.ORDERS_NOT_FOUND.CODE
         }));
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             {'../services/orderService': orderServiceMock});
-        let orderRoutes = proxyquire('../api/routes/orders',
-            {'../controllers/orders': order});
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            {'../controllers/orderController': order});
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes});
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes});
         request(app).get('/orders')
             .expect(HttpStatus.NOT_FOUND).end((err, res) => {
             should.not.exist(err);
@@ -318,12 +318,12 @@ describe("Testing API calls for the resource 'order'", function () {
             })
         );
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             {'../services/orderService': orderServiceMock});
-        let orderRoutes = proxyquire('../api/routes/orders',
-            {'../controllers/orders': order});
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            {'../controllers/orderController': order});
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes});
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes});
         request(app).get('/orders/all/5c6f7e3bc65ba5267af2d27f')
             .expect(HttpStatus.OK).end((err, res) => {
             should.not.exist(err);
@@ -357,12 +357,12 @@ describe("Testing API calls for the resource 'order'", function () {
             data: null
         }));
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             {'../services/orderService': orderServiceMock});
-        let orderRoutes = proxyquire('../api/routes/orders',
-            {'../controllers/orders': order});
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            {'../controllers/orderController': order});
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes});
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes});
         request(app).get('/orders/all/5c6f7e3bc65ba5267afab27f')
             .expect(HttpStatus.NOT_FOUND).end((err, res) => {
             should.not.exist(err);
@@ -386,12 +386,12 @@ describe("Testing API calls for the resource 'order'", function () {
 
         }));
 
-        let order = proxyquire('../api/controllers/orders',
+        let order = proxyquire('../api/controllers/orderController',
             {'../services/orderService': orderServiceMock});
-        let orderRoutes = proxyquire('../api/routes/orders',
-            {'../controllers/orders': order});
+        let orderRoutes = proxyquire('../api/routes/orderRoute',
+            {'../controllers/orderController': order});
 
-        let app = proxyquire('../app', {'./api/routes/orders': orderRoutes});
+        let app = proxyquire('../app', {'./api/routes/orderRoute': orderRoutes});
         request(app).put('/orders/5c6a63a291662738474822d7')
             .expect(HttpStatus.OK).end((err, res) => {
             should.not.exist(err);

@@ -10,14 +10,27 @@ const ErrorMessages = require('../api/errorConstants');
 
 describe("Testing API calls for the resource 'item'", function () {
     let sandbox;
+    let globalConfigMock;
+
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
+        CheckAuth = require('../api/middleware/checkAuth');
+        checkAuthStub = sinon.stub(CheckAuth, 'authenticate')
+            .callsFake(function(req, res, next) {
+                return next();
+            });
+
+        globalConfigMock = Object.assign({}, global.config);
+        global.config = { mongodb: {connectionString: ''}};
+    });
 
     afterEach(function () {
         sandbox.restore();
+        checkAuthStub.restore();
+        global.config = globalConfigMock;
     });
 
-    before(function () {
-        sandbox = sinon.sandbox.create();
-    });
+
 
 
   it("should return an item for given item_id", function (done) {
@@ -50,13 +63,13 @@ describe("Testing API calls for the resource 'item'", function () {
       }
     }));
 
-    let item = proxyquire('../api/controllers/items',
+    let item = proxyquire('../api/controllers/itemController',
       { '../services/itemService': itemServiceMock });
 
-    let itemRoutes = proxyquire('../api/routes/items',
-      { '../controllers/items': item })
+    let itemRoutes = proxyquire('../api/routes/itemRoute',
+      { '../controllers/itemController': item })
 
-    let app = proxyquire('../app', { './api/routes/items': itemRoutes });
+    let app = proxyquire('../app', { './api/routes/itemRoute': itemRoutes });
     request(app).get('/items/5c756d337e474030ee917cea')
       .expect(HttpStatus.OK).end((err, res) => {
         should.not.exist(err);
@@ -87,12 +100,12 @@ describe("Testing API calls for the resource 'item'", function () {
       message: ErrorMessages.ITEM_UNAVAILABLE.MESSAGE
     }));
 
-    let item = proxyquire('../api/controllers/items',
+    let item = proxyquire('../api/controllers/itemController',
       { '../services/itemService': itemServiceMock })
-    let itemRoutes = proxyquire('../api/routes/items',
-      { '../controllers/items': item })
+    let itemRoutes = proxyquire('../api/routes/itemRoute',
+      { '../controllers/itemController': item })
 
-    let app = proxyquire('../app', { './api/routes/items': itemRoutes });
+    let app = proxyquire('../app', { './api/routes/itemRoute': itemRoutes });
     request(app).get('/items/1')
       .expect(HttpStatus.NOT_FOUND).end((err, res) => {
         should.not.exist(err);
@@ -133,12 +146,12 @@ describe("Testing API calls for the resource 'item'", function () {
           })
       );
 
-      let item = proxyquire('../api/controllers/items',
+      let item = proxyquire('../api/controllers/itemController',
           {'../services/itemService': itemServiceMock});
-      let itemRoutes = proxyquire('../api/routes/items',
-          {'../controllers/items': item});
+      let itemRoutes = proxyquire('../api/routes/itemRoute',
+          {'../controllers/itemController': item});
 
-      let app = proxyquire('../app', {'./api/routes/items': itemRoutes});
+      let app = proxyquire('../app', {'./api/routes/itemRoute': itemRoutes});
       request(app).get('/items')
           .expect(HttpStatus.OK).end((err, res) => {
           should.not.exist(err);
@@ -172,12 +185,12 @@ describe("Testing API calls for the resource 'item'", function () {
               })
           );
 
-          let item = proxyquire('../api/controllers/items',
+          let item = proxyquire('../api/controllers/itemController',
               {'../services/itemService': itemServiceMock3});
-          let itemRoutes = proxyquire('../api/routes/items',
-              {'../controllers/items': item});
+          let itemRoutes = proxyquire('../api/routes/itemRoute',
+              {'../controllers/itemController': item});
 
-          let app = proxyquire('../app', {'./api/routes/items': itemRoutes});
+          let app = proxyquire('../app', {'./api/routes/itemRoute': itemRoutes});
           request(app).get('/items')
               .expect(HttpStatus.NOT_FOUND).end((err, res) => {
               should.not.exist(err);
@@ -255,12 +268,12 @@ describe("Testing API calls for the resource 'item'", function () {
             })
         );
 
-        let item = proxyquire('../api/controllers/items',
+        let item = proxyquire('../api/controllers/itemController',
             {'../services/itemService': itemServiceMock});
-        let itemRoutes = proxyquire('../api/routes/items',
-            {'../controllers/items': item});
+        let itemRoutes = proxyquire('../api/routes/itemRoute',
+            {'../controllers/itemController': item});
 
-        let app = proxyquire('../app', {'./api/routes/items': itemRoutes});
+        let app = proxyquire('../app', {'./api/routes/itemRoute': itemRoutes});
         request(app).get('/items')
             .expect(HttpStatus.OK).end((err, res) => {
             should.not.exist(err);
