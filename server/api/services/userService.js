@@ -1,70 +1,65 @@
-const User = require("../models/user");
-const messages = require("../messages");
-const ErrorConstants = require('../errorConstants');
 const log4js = require('log4js');
+const User = require('../models/user');
+const messages = require('../messages');
+const ErrorConstants = require('../errorConstants');
+
 const logger = log4js.getLogger();
-const mongoose = require('mongoose');
 
-
-
-
-exports.getUser = function(email) {
+exports.getUser = (email) => {
     return User.find(email)
         .exec()
-        .then(returnedUser => {
-            console.log(returnedUser);
-            return returnedUser
+        .then((returnedUser) => {
+            return returnedUser;
         })
-        .catch(err => {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-                error: err
-            });
+        .catch((err) => {
+            logger.error('error initiated in the Database');
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
         });
-}
+};
 
 
-exports.registerUser = function(data) {
+exports.registerUser = (data) => {
     return User.find(data)
         .exec()
-        .then(returnedUser => {
-            return returnedUser
+        .then((returnedUser) => {
+            return returnedUser;
         })
-        .catch(err => {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-                error: err
-            });
+        .catch((err) => {
+            logger.error('error initiated in the Database');
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
         });
-}
+};
 
 
-exports.deleteUser = function(data) {
+exports.deleteUser = (data) => {
     return User.remove(data)
         .exec()
-        .then(returnedUser => {
-            return returnedUser
+        .then((returnedUser) => {
+            return returnedUser;
         })
-        .catch(err => {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-                error: err
-            });
+        .catch((err) => {
+            logger.error('error initiated in the Database');
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
         });
-}
+};
 
 
-exports.getAllUsers = function() {
+exports.getAllUsers = () => {
     return User.find()
         .exec()
-        .then(returnedUser => {
-            return returnedUser
+        .then((returnedUser) => {
+            return returnedUser;
         })
-        .catch(err => {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-                error: err
-            });
+        .catch((err) => {
+            logger.error('error initiated in the Database');
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
         });
-}
-
-
-
-
-
+};

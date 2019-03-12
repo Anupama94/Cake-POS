@@ -5,10 +5,10 @@ const ErrorConstants = require('../errorConstants');
 const UserService = require('../services/userService');
 
 
-exports.usersLogin = (req, res, next) => {
+exports.usersLogin = (req, res) => {
     const email = req.body.email;
-    UserService.getUser({email: email})
-        .then(user => {
+    UserService.getUser({ email })
+        .then((user) => {
             if (user.length < 1) {
                 return res.status(HttpStatus.UNAUTHORIZED).json({
                     message: ErrorConstants.AUTH_FAILED.MESSAGE,
@@ -17,7 +17,6 @@ exports.usersLogin = (req, res, next) => {
             }
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (err) {
-                    console.log(err);
                     return res.status(HttpStatus.UNAUTHORIZED).json({
                         message: ErrorConstants.AUTH_FAILED.MESSAGE,
                         code: ErrorConstants.AUTH_FAILED.CODE
@@ -25,37 +24,33 @@ exports.usersLogin = (req, res, next) => {
                     });
                 }
                 if (result) {
-                    console.log(result)
                     const token = jwt.sign({
-                            email: user[0].email,
-                            userId: user[0]._id
-                        },
-                        process.env.JWT_KEY,
-                        {
-                            expiresIn: "24h"
-                        }
+                        email: user[0].email,
+                        userId: user[0]._id
+                    },
+                    process.env.JWT_KEY,
+                    {
+                        expiresIn: '24h'
+                    });
 
-                    );
                     return res.status(HttpStatus.OK).json({
                         id: user[0]._id,
-                        message: "Auth successful",
-                        token: token
-                    })
+                        message: 'Auth successful',
+                        token
+                    });
                 }
                 res.status(HttpStatus.UNAUTHORIZED).json({
                     message: ErrorConstants.AUTH_FAILED.MESSAGE,
                     code: ErrorConstants.AUTH_FAILED.CODE
                 });
-            })
+            });
         })
-        .catch(err => {
+        .catch((err) => {
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
             });
         });
-}
-
-
+};
 
 /*
     Required only for Testing. Remove!
@@ -108,34 +103,30 @@ exports.usersLogin = (req, res, next) => {
 // }
 
 
-
-exports.usersDeleteUser = (req, res, next) => {
+exports.usersDeleteUser = (req, res) => {
     UserService.deleteUser({ _id: req.params.userId })
         .exec()
-        .then(result => {
-            res.status(200).json({
-                message: "User deleted"
+        .then(() => {
+            res.status(HttpStatus.OK).json({
+                message: 'User deleted'
             });
         })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
+        .catch((err) => {
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
-            })
+            });
         });
-}
+};
 
 
-exports.usersGetUser = (req, res, next) => {
+exports.usersGetUser = (req, res) => {
     UserService.getAllUsers()
-        .then(docs => {
-            res.status(200).json(docs);
-
+        .then((docs) => {
+            res.status(HttpStatus.OK).json(docs);
         })
-        .catch(err => {;
-            res.status(500).json({
+        .catch((err) => {
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
             });
         });
-}
-
+};

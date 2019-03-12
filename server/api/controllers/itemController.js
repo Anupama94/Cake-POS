@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 const HttpStatus = require('http-status-codes');
-const Item = require("../models/item");
+const log4js = require('log4js');
+const Item = require('../models/item');
 const itemService = require('../services/itemService');
 const ErrorConstants = require('../errorConstants');
-const log4js = require('log4js');
+
 const logger = log4js.getLogger();
 
 
-exports.itemsGetAll = (req, res, next) => {
+exports.itemsGetAll = (req, res) => {
     itemService.getAllItems()
-        .then(result => {
+        .then((result) => {
             if (result.success && result.data) {
-                
-                logger.info("items successfully received");
+                logger.info('items successfully received');
                 res.status(HttpStatus.OK).json(result.data);
-
-
-            }
-
-            else {
-                logger.info("no items found");
+            } else {
+                logger.info('no items found');
                 res.status(HttpStatus.NOT_FOUND).json({
                     success: false,
                     message: ErrorConstants.ITEMS_NOT_FOUND.MESSAGE,
@@ -27,56 +23,49 @@ exports.itemsGetAll = (req, res, next) => {
                 });
             }
         })
-        .catch(err => {
-            logger.error("error occurred while retriving item for the item id ${id}", err, "item.js");
+        .catch((err) => {
+            logger.error('error occurred while retriving item for the item id ${id}', err, 'item.js');
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: ErrorConstants.SERVER_ERROR.MESSAGE,
                 code: ErrorConstants.SERVER_ERROR.CODE
             });
-        })
-}
+        });
+};
 
 
-exports.itemsGetItem = (req, res, next) => {
+exports.itemsGetItem = (req, res) => {
     const id = req.params.itemId;
 
     itemService.getItemById(id)
-        .then(result => {
-            
+        .then((result) => {
             if (result.success && result.data) {
-                logger.info("item by the given id successfully received");
+                logger.info('item by the given id successfully received');
                 res.status(HttpStatus.OK).json(result.data);
-
-
-            }
-            else {
-                logger.error("item by the given id not found");
+            } else {
+                logger.error('item by the given id not found');
                 res.status(HttpStatus.NOT_FOUND).json({
                     success: false,
                     message: ErrorConstants.ITEM_UNAVAILABLE.MESSAGE,
                     code: ErrorConstants.ITEM_UNAVAILABLE.CODE
                 });
             }
-
         })
-        .catch(err => {
-            logger.error("error occurred while retriving item for the item id ${id}", err, "item.js");
+        .catch((err) => {
+            logger.error('error occurred while retriving item for the item id ${id}', err, 'item.js');
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: ErrorConstants.SERVER_ERROR.MESSAGE,
                 code: ErrorConstants.SERVER_ERROR.CODE
             });
         });
-}
+};
 
 
 /*
-
     Created Only for Testing. Remove!
-    
-    */
+*/
 
 
-exports.itemsCreateItem = (req, res, next) => {
+exports.itemsCreateItem = (req, res) => {
     const item = new Item({
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -84,38 +73,35 @@ exports.itemsCreateItem = (req, res, next) => {
         category: req.body.category
     });
 
-    item.save().
-        then(result => {
-            console.log(result);
+    item.save()
+        .then(() => {
             res.status(201).json({
-                message: "Succefully created a new item",
+                message: 'Succefully created a new item',
                 createdItem: item
             });
         })
-        .catch(err => {
-            console.log(err);
+        .catch((err) => {
             res.status(500).json({
                 error: err
             });
         });
-}
+};
 
 
-exports.itemsDeleteItem = (req, res, next) => {
+exports.itemsDeleteItem = (req, res) => {
     const id = req.params.itemId;
     Item.remove({ _id: id })
         .exec()
-        .then(result => {
+        .then((result) => {
             res.status(200).json(result);
         })
-        .catch(err => {
-            console.log(err);
+        .catch((err) => {
             res.status(500).json({ error: err });
         });
-}
+};
 
 
-exports.itemsUpdateItem = (req, res, next) => {
+exports.itemsUpdateItem = (req, res) => {
     const id = req.params.itemId;
     const updateOps = {};
     for (const ops of req.body) {
@@ -123,14 +109,12 @@ exports.itemsUpdateItem = (req, res, next) => {
     }
     Item.update({ _id: id }, { $set: updateOps })
         .exec()
-        .then(result => {
-            console.log(result);
+        .then((result) => {
             res.status(200).json(result);
         })
-        .catch(err => {
-            console.log(err);
+        .catch((err) => {
             res.status(500).json({
                 error: err
             });
         });
-}
+};
