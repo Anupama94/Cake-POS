@@ -5,7 +5,7 @@ const Item = require('../models/item');
 const itemService = require('../services/itemService');
 const ErrorConstants = require('../errorConstants');
 
-const logger = log4js.getLogger();
+const logger = log4js.getLogger('app');
 
 
 exports.itemsGetAll = (req, res) => {
@@ -24,7 +24,7 @@ exports.itemsGetAll = (req, res) => {
             }
         })
         .catch((err) => {
-            logger.error('error occurred while retriving item for the item id ${id}', err, 'item.js');
+            logger.error('error occurred while retriving item for the item id ${id}', err, 'itemController.js');
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: ErrorConstants.SERVER_ERROR.MESSAGE,
                 code: ErrorConstants.SERVER_ERROR.CODE
@@ -39,7 +39,7 @@ exports.itemsGetItem = (req, res) => {
     itemService.getItemById(id)
         .then((result) => {
             if (result.success && result.data) {
-                logger.info('item by the given id successfully received');
+                logger.info('item by the given id successfully received, itemController.js');
                 res.status(HttpStatus.OK).json(result.data);
             } else {
                 logger.error('item by the given id not found');
@@ -75,13 +75,13 @@ exports.itemsCreateItem = (req, res) => {
 
     item.save()
         .then(() => {
-            res.status(201).json({
+            res.status(HttpStatus.CREATED).json({
                 message: 'Succefully created a new item',
                 createdItem: item
             });
         })
         .catch((err) => {
-            res.status(500).json({
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
             });
         });
@@ -93,10 +93,10 @@ exports.itemsDeleteItem = (req, res) => {
     Item.remove({ _id: id })
         .exec()
         .then((result) => {
-            res.status(200).json(result);
+            res.status(HttpStatus.OK).json(result);
         })
         .catch((err) => {
-            res.status(500).json({ error: err });
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: err });
         });
 };
 
@@ -110,10 +110,10 @@ exports.itemsUpdateItem = (req, res) => {
     Item.update({ _id: id }, { $set: updateOps })
         .exec()
         .then((result) => {
-            res.status(200).json(result);
+            res.status(HttpStatus.OK).json(result);
         })
         .catch((err) => {
-            res.status(500).json({
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
             });
         });

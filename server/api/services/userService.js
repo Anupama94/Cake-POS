@@ -12,7 +12,7 @@ exports.getUser = (email) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -27,7 +27,7 @@ exports.registerUser = (data) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -42,7 +42,7 @@ exports.deleteUser = (data) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -57,7 +57,7 @@ exports.getAllUsers = () => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );

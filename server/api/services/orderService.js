@@ -31,7 +31,7 @@ exports.getAllOrders = () => {
             return messages.success(response);
         })
         .catch((err) => {
-            logger.error('Database error');
+            logger.error('Database error, orderService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -50,7 +50,7 @@ exports.getOrderById = (id) => {
             return messages.success(returnedOrder);
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, orderService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -59,13 +59,13 @@ exports.getOrderById = (id) => {
 
 
 exports.updateOrder = (id, updateOps) => {
-    return Order.update({ _id: id }, { $set: updateOps })
+    return Order.updateOne({ _id: id }, { $set: updateOps })
         .exec()
         .then((updatedObject) => {
             return messages.success(updatedObject);
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, orderService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -85,7 +85,8 @@ exports.getOrdersByCreator = function (userId) {
             return messages.success(returnedOrders);
         })
         .catch((err) => {
-            messages.error(
+            logger.error('error initiated in the Database, orderService.js');
+            return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
         });

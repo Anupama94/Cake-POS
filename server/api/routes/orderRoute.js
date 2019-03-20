@@ -1,14 +1,15 @@
 const express = require('express');
-const router = express.Router();
 const CheckAuth = require('../middleware/checkAuth');
 const OrderController = require('../controllers/orderController');
+
+const router = express.Router();
 
 router.get('/', CheckAuth.authenticate, OrderController.ordersGetAll);
 
 router.get('/:orderId', CheckAuth.authenticate, OrderController.ordersGetOrder);
 
 router.get('/all/:userId', CheckAuth.authenticate, OrderController.ordersGetByUserId);
-    
+
 router.put('/:orderId', OrderController.ordersUpdateOrder);
 
 /*

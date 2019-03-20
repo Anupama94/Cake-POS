@@ -1,21 +1,20 @@
 const express = require('express');
-const router = express.Router();
-
-const bcrypt = require('bcrypt');
-const User = require('../models/user');
+// const User = require('../models/user');
 const UsersController = require('../controllers/userController');
+
+const router = express.Router();
 
 
 router.post('/login', UsersController.usersLogin);
 
 
-/* Created only for testing 
+/* Created only for testing
     Remove it !
                 */
-//router.post('/register', UsersController.usersRegisterUser);
+// router.post('/register', UsersController.usersRegisterUser);
 
 
-/* Created only for testing 
+/* Created only for testing
     Remove it !
                 */
 router.delete('/:userId', UsersController.usersDeleteUser);

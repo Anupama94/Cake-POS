@@ -8,7 +8,6 @@ import { FaWindowClose, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import './OrderDetails.css';
 import PropTypes from 'prop-types';
 import { getOrderItems, updateOrder } from "../../apiCalls/callApi";
-import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css';
 
 
@@ -36,31 +35,26 @@ class OrderBill extends React.Component {
     getOrderItemsAndSetState() {
         getOrderItems(this.state.selectedOrderId)
             .then((result) => {
-                    this.setState({ selectedOrder: result.data.items, totalPayable: result.data.totalPrice, status: result.data.status });
-                }
+                this.setState({ selectedOrder: result.data.items, totalPayable: result.data.totalPrice, status: result.data.status });
+            }
 
             );
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.clickCounter !== this.props.clickCounter){
-            console.log("nextProps", nextProps);
-            console.log(nextProps.receiveSelectedFoodItem);
+        if (nextProps.clickCounter !== this.props.clickCounter) {
             let newItemToBeAdded = { quantity: 1, product: nextProps.receiveSelectedFoodItem._id };
 
             let index = this.state.selectedOrder.findIndex((order) => {
                 return order.product._id === newItemToBeAdded.product;
             });
-            console.log("INDEXXXX", index);
             if (index !== -1) {
-                console.log("exists");
                 this.incrementQuantity(this.state.selectedOrder[index]._id);
-                
+
             }
             else {
                 this.addItemToOrder(newItemToBeAdded).then((updatedItems) => {
                     this.updateDB(updatedItems).then((res) => {
-                        console.log("YAYYYYY");
                         this.getOrderItemsAndSetState();
                     })
                 });
@@ -89,7 +83,7 @@ class OrderBill extends React.Component {
         router: PropTypes.object
     }
 
-    incrementQuantity(id){
+    incrementQuantity(id) {
         this.logicToIncrement(id).then((updatedOrder) => {
             this.updateDB(updatedOrder);
         });
@@ -190,7 +184,7 @@ class OrderBill extends React.Component {
         this.updateOrderStatus().then(updatedOrder => {
             console.log("UPDATED ORDER", updatedOrder);
             this.updateDB(updatedOrder);
-            console.log("one", );
+            console.log("one");
         }).then(() => {
             console.log("two");
             this.context.router.history.push("/OrderList");
@@ -201,34 +195,34 @@ class OrderBill extends React.Component {
 
 
     loadOrderBill = () => {
-        return(
+        return (
             <Table  >
-            <thead style={{ backgroundColor: "orange" }}>
-    <tr>
-        <th>X</th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-        </tr>
-        </thead>
+                <thead style={{ backgroundColor: "orange" }}>
+                    <tr>
+                        <th>X</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
 
-        <tbody>
-            {this.state.selectedOrder.map((item) => {
-                    return (<tr key={this.state.selectedOrder.id}>
-                        <th scope="row"><FaWindowClose style={{ color: "red" }} onClick={this.deleteItem.bind(this, item._id)} />
+                <tbody>
+                    {this.state.selectedOrder.map((item) => {
+                        return (<tr key={this.state.selectedOrder.id}>
+                            <th scope="row"><FaWindowClose style={{ color: "red" }} onClick={this.deleteItem.bind(this, item._id)} />
 
-                    </th>
-                    <th value={item.product.name}>{item.product.name}</th>
-                        <td value={item.quantity}>{item.quantity}
-                        <ButtonGroup className="btn-space" size="sm" >
-                        <Button outline color="warning" onClick={this.incrementQuantity.bind(this, item._id)}><FaChevronUp /></Button>
-                        <Button outline onClick={this.decrementQuantity.bind(this, item._id)}><FaChevronDown /></Button>
-                        </ButtonGroup></td>
-                    <td value={item.product.price * item.quantity}>{item.product.price * item.quantity}</td>
+                            </th>
+                            <th value={item.product.name}>{item.product.name}</th>
+                            <td value={item.quantity}>{item.quantity}
+                                <ButtonGroup className="btn-space" size="sm" >
+                                    <Button outline color="warning" onClick={this.incrementQuantity.bind(this, item._id)}><FaChevronUp /></Button>
+                                    <Button outline onClick={this.decrementQuantity.bind(this, item._id)}><FaChevronDown /></Button>
+                                </ButtonGroup></td>
+                            <td value={item.product.price * item.quantity}>{item.product.price * item.quantity}</td>
                         </tr>);
-                })}
-            </tbody>
-        </Table>
+                    })}
+                </tbody>
+            </Table>
         )
     }
 
@@ -238,42 +232,38 @@ class OrderBill extends React.Component {
         return (
             <div>
 
-            <Card outline color="secondary" >
-            <CardHeader tag="h3" style={{ backgroundColor: "grey" }}>
-    <Row>
-        <Col md="6">Order Details</Col>
-        <Col md="6" >  <Button className="float-right" outline color="danger" style={{ color: "orange" }} onClick={this.closeOrder.bind(this)}>CLOSE ORDER</Button>
-        </Col>
-        </Row>
-        </CardHeader>
+                <Card outline color="secondary" >
+                    <CardHeader tag="h3" style={{ backgroundColor: "grey" }}>
+                        <Row>
+                            <Col md="6">Order Details</Col>
+                            <Col md="6" >  <Button className="float-right" outline color="danger" style={{ color: "orange" }} onClick={this.closeOrder.bind(this)}>CLOSE ORDER</Button>
+                            </Col>
+                        </Row>
+                    </CardHeader>
 
-        <CardBody >
-        <CardText>
-            <div id="scrollableContainer">
+                    <CardBody >
+                        <CardText>
+                            <div id="scrollableContainer">
+                                {this.loadOrderBill()}
+                            </div>
+                        </CardText>
+                    </CardBody>
 
-        {this.loadOrderBill()}
+                    <CardFooter style={{ backgroundColor: "grey" }}>
+                        <Row>
+                            <Col md="6">
 
+                            </Col>
+                            <Col md="6">
+                                <h5>Total Payable: Rs. <strong style={{ color: "orange" }}>{this.state.totalPayable}</strong></h5>
 
+                            </Col>
+                        </Row>
+                    </CardFooter>
+                </Card>
+            </div >
 
-            </div>
-        </CardText>
-        </CardBody>
-
-        <CardFooter style={{ backgroundColor: "grey" }}>
-    <Row>
-        <Col md="6">
-
-            </Col>
-            <Col md="6">
-            <h5>Total Payable: Rs. <strong style={{ color: "orange" }}>{this.state.totalPayable}</strong></h5>
-
-        </Col>
-        </Row>
-        </CardFooter>
-        </Card>
-        </div >
-
-    );
+        );
     }
 
 }

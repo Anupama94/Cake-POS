@@ -1,22 +1,21 @@
-const ErrorConstants = require('./errorConstants')
 
-function successMessage(data, message, code) {
-  return {
-    success: true,
-    data: data || null
-  };
+function successMessage(data) {
+    return {
+        success: true,
+        data: data || null
+    };
 }
 
 function errorMessage(errorObject, message, code) {
-  return {
-    success: false,
-    message: message,
-    data: errorObject,
-    code: code
-  };
+    return {
+        success: false,
+        message,
+        data: errorObject,
+        code
+    };
 }
 
 module.exports = {
-  success: successMessage,
-  error: errorMessage
+    success: successMessage,
+    error: errorMessage
 };

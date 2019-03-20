@@ -5,13 +5,14 @@ const OrderService = require('../services/orderService');
 const Order = require('../models/order');
 const ErrorConstants = require('../errorConstants');
 
-const logger = log4js.getLogger();
+const logger = log4js.getLogger('app');
 
 
 exports.ordersGetAll = (req, res) => {
     OrderService.getAllOrders()
         .then((docs) => {
             if (docs.success && docs.data) {
+                logger.info('all orders successfully received in order.js');
                 res.status(HttpStatus.OK).json(docs.data);
             } else {
                 res.status(HttpStatus.NOT_FOUND).json({
@@ -66,7 +67,7 @@ exports.ordersUpdateOrder = (req, res) => {
     OrderService.updateOrder(id, updateOps)
         .then((result) => {
             if (result.success && result.data) {
-                logger.info('successfully updated');
+                logger.info('order {$id} successfully updated');
                 res.status(HttpStatus.OK).json(result);
             }
         })
@@ -84,6 +85,7 @@ exports.ordersGetByUserId = (req, res) => {
     OrderService.getOrdersByCreator(userId)
         .then((docs) => {
             if (docs.success && docs.data) {
+                logger.info('orders of user {$userId } successfully retrieved');
                 res.status(HttpStatus.OK).json(docs.data);
             } else {
                 res.status(HttpStatus.NOT_FOUND).json({
