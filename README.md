@@ -36,7 +36,7 @@ npm start
 
 The server-side has been integrated with ESLint to check the source code for programmatic as well as stylistic errors. Using the airbnb rule-set, the code consists of 0 eslint issues.
 
-Server-side unit test coverage as of 21.03.2019, is **78%**. To run the unit tests,
+Server-side unit test coverage as of 21.03.2019, is **81%**. To run the unit tests,
 
 ```
 cd server

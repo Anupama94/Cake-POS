@@ -67,7 +67,7 @@ export class RegisterBox extends React.Component {
 
     render() {
 
-        const { username, email, password, } = this.state;
+        const { email, password, } = this.state;
 
         return (
             <div className="inner-container">
