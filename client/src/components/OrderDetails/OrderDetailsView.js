@@ -11,22 +11,20 @@ import Menu from './Menu';
 
 
 class OrderDetailsView extends React.Component {
-   constructor(props) {
-       super(props);
-       console.log(props);
-       this.state = {
-           selectedOrder: props.match.params.id,
-           objectReceived: {},
-           itemCounter: 0
-       }
-       this.subscribeToMenuItem = this.subscribeToMenuItem.bind(this);
-   }
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedOrder: props.match.params.id,
+            objectReceived: {},
+            itemCounter: 0
+        }
+        this.subscribeToMenuItem = this.subscribeToMenuItem.bind(this);
+    }
 
-   subscribeToMenuItem =  function(itemObject){
-       console.log("Order detail view");
+    subscribeToMenuItem = function (itemObject) {
         let tmp = this.state.itemCounter + 1;
-        this.setState({itemCounter: tmp, objectReceived: itemObject});
-   }
+        this.setState({ itemCounter: tmp, objectReceived: itemObject });
+    }
 
     render() {
         return (
@@ -37,13 +35,13 @@ class OrderDetailsView extends React.Component {
                     <Row>
                         <Col xs="6" sm="4" >
 
-                            <OrderBill orderId={this.state.selectedOrder} receiveSelectedFoodItem={this.state.objectReceived} clickCounter={this.state.itemCounter}/>
+                            <OrderBill orderId={this.state.selectedOrder} receiveSelectedFoodItem={this.state.objectReceived} clickCounter={this.state.itemCounter} />
                         </Col>
                         <Col xs="6" sm="8" >
 
-                            <Menu sendMenuItem={this.subscribeToMenuItem}/>
+                            <Menu sendMenuItem={this.subscribeToMenuItem} />
                         </Col>
-                        
+
                     </Row>
 
 

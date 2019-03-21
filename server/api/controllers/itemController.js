@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
 const HttpStatus = require('http-status-codes');
 const log4js = require('log4js');
-const Item = require('../models/item');
 const itemService = require('../services/itemService');
 const ErrorConstants = require('../errorConstants');
+const validateItemService = require('../validation/validateItem');
 
-const logger = log4js.getLogger();
+const logger = log4js.getLogger('app');
 
 
 exports.itemsGetAll = (req, res) => {
@@ -24,7 +23,7 @@ exports.itemsGetAll = (req, res) => {
             }
         })
         .catch((err) => {
-            logger.error('error occurred while retriving item for the item id ${id}', err, 'item.js');
+            logger.error('error occurred while retriving all items', err, 'itemController.js');
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: ErrorConstants.SERVER_ERROR.MESSAGE,
                 code: ErrorConstants.SERVER_ERROR.CODE
@@ -39,7 +38,7 @@ exports.itemsGetItem = (req, res) => {
     itemService.getItemById(id)
         .then((result) => {
             if (result.success && result.data) {
-                logger.info('item by the given id successfully received');
+                logger.info('item by the given id successfully received, itemController.js');
                 res.status(HttpStatus.OK).json(result.data);
             } else {
                 logger.error('item by the given id not found');
@@ -51,7 +50,7 @@ exports.itemsGetItem = (req, res) => {
             }
         })
         .catch((err) => {
-            logger.error('error occurred while retriving item for the item id ${id}', err, 'item.js');
+            logger.error(`error occurred while retriving item for the item id ${id}`, err, 'item.js');
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: ErrorConstants.SERVER_ERROR.MESSAGE,
                 code: ErrorConstants.SERVER_ERROR.CODE
@@ -66,55 +65,57 @@ exports.itemsGetItem = (req, res) => {
 
 
 exports.itemsCreateItem = (req, res) => {
-    const item = new Item({
-        _id: mongoose.Types.ObjectId(),
-        name: req.body.name,
-        price: req.body.price,
-        category: req.body.category
-    });
-
-    item.save()
-        .then(() => {
-            res.status(201).json({
-                message: 'Succefully created a new item',
-                createdItem: item
+    if (validateItemService.validateItemCreation(req)) {
+        itemService.createItem(req)
+            .then((result) => {
+                if (result.success) {
+                    res.status(HttpStatus.CREATED).json({
+                        message: 'Successfully created a new item',
+                        createdItem: result.data
+                    });
+                }
+            })
+            .catch((err) => {
+                res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                    error: err
+                });
             });
-        })
-        .catch((err) => {
-            res.status(500).json({
-                error: err
-            });
+    } else {
+        res.status(HttpStatus.BAD_REQUEST).json({
+            message: 'Inavlid parameters'
         });
+    }
 };
 
 
 exports.itemsDeleteItem = (req, res) => {
     const id = req.params.itemId;
-    Item.remove({ _id: id })
-        .exec()
+    itemService.deleteItem({ _id: id })
         .then((result) => {
-            res.status(200).json(result);
+            if (result.success && result.data.deletedCount === 1) {
+                res.status(HttpStatus.OK).json(result);
+            } else {
+                res.status(HttpStatus.NOT_FOUND).json({
+                    success: false,
+                    message: ErrorConstants.ITEM_UNAVAILABLE.MESSAGE,
+                    code: ErrorConstants.ITEM_UNAVAILABLE.CODE
+                });
+            }
         })
         .catch((err) => {
-            res.status(500).json({ error: err });
+            logger.error(`error occurred while deleting item for the item id ${id}`, err, 'item.js');
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: err });
         });
 };
 
 
 exports.itemsUpdateItem = (req, res) => {
-    const id = req.params.itemId;
-    const updateOps = {};
-    for (const ops of req.body) {
-        updateOps[ops.propName] = ops.value;
-    }
-    Item.update({ _id: id }, { $set: updateOps })
-        .exec()
+    itemService.updateItem(req)
         .then((result) => {
-            res.status(200).json(result);
+            res.status(HttpStatus.OK).json(result);
         })
         .catch((err) => {
-            res.status(500).json({
-                error: err
-            });
+            logger.error('error occurred while updating item', err, 'item.js');
+            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({ error: err });
         });
 };

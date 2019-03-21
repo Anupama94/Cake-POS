@@ -1,0 +1,36 @@
+{
+  "appenders": {
+    "out": {
+      "type": "stdout"
+    },
+    "app": {
+      "type": "fileSync",
+      "filename": "log/app.log",
+      "maxLogSize": 10485760,
+      "numBackups": 0
+    },
+    "errorFile": {
+      "type": "fileSync",
+      "filename": "log/errors.log"
+    },
+    "errors": {
+      "type": "logLevelFilter",
+      "level": "ERROR",
+      "appender": "errorFile"
+    }
+  },
+  "categories": {
+    "default": {
+      "appenders": [
+        "app"
+      ],
+      "level": "DEBUG"
+    },
+    "startup": {
+      "appenders": [
+        "out"
+      ],
+      "level": "DEBUG"
+    }
+  }
+}

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('../db/connect');
 
 const orderSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
+    _id: { type: mongoose.Types.ObjectId, auto: true },
     items: [{
         product: { type: mongoose.Schema.Types.ObjectId, ref: 'Item', required: true },
         quantity: { type: Number, default: 1 }

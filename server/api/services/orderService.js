@@ -31,7 +31,6 @@ exports.getAllOrders = () => {
             return messages.success(response);
         })
         .catch((err) => {
-            logger.error('Database error');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -50,7 +49,7 @@ exports.getOrderById = (id) => {
             return messages.success(returnedOrder);
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, orderService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -59,13 +58,13 @@ exports.getOrderById = (id) => {
 
 
 exports.updateOrder = (id, updateOps) => {
-    return Order.update({ _id: id }, { $set: updateOps })
+    return Order.updateOne({ _id: id }, { $set: updateOps })
         .exec()
         .then((updatedObject) => {
             return messages.success(updatedObject);
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, orderService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -73,7 +72,7 @@ exports.updateOrder = (id, updateOps) => {
 };
 
 
-exports.getOrdersByCreator = function (userId) {
+exports.getOrdersByCreator = (userId) => {
     const query = { creator: userId };
     return Order.find(query)
         .populate('items.product')
@@ -85,8 +84,36 @@ exports.getOrdersByCreator = function (userId) {
             return messages.success(returnedOrders);
         })
         .catch((err) => {
-            messages.error(
+            logger.error('error initiated in the Database, orderService.js');
+            return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
         });
 };
+
+
+// exports.createOrder = (req) => {
+//     const orderItems = [];
+//     const userId = req.params.userId;
+//     for (const ops of req.body.items) {
+//         const updateOps = { product: ops.product, quantity: ops.quantity };
+//         orderItems.push(updateOps);
+//     }
+//
+//     const order = new Order({
+//         items: orderItems,
+//         status: 'open',
+//         customer: req.body.customer,
+//         totalPrice: req.body.totalPrice,
+//         creator: userId,
+//         time: Date.now()
+//     });
+//
+//     return order.save()
+//         .then(() => {
+//             return messages.success(order);
+//         })
+//         .catch((err) => {
+//             return err;
+//         });
+// };

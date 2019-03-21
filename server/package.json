@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "nyc mocha --timeout 9999"
+    "test": "nyc mocha --recursive --timeout 9999"
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
@@ -28,6 +28,8 @@
     "request": "^2.88.0",
     "should": "^13.2.3",
     "sinon": "^7.2.3",
+    "sinon-as-promised": "^4.0.3",
+    "sinon-mongoose": "^2.2.1",
     "sinon-stub-promise": "^4.0.0"
   },
   "devDependencies": {

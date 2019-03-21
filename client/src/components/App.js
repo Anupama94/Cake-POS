@@ -9,20 +9,16 @@ import ProtectedRoute from "../authentication/protectedRoutes";
 
 class App extends React.Component {
     render() {
-        return(
+        return (
             <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={ Login } />
-                <ProtectedRoute path="/OrderList" component={ OrderList } exact />
-                <ProtectedRoute path="/OrderDetails/:id" component={ OrderDetailsView } exact />
-            </Switch>
-        
-        </BrowserRouter>
+                <Switch>
+                    <Route path="/" component={Login} exact/>
+                    <ProtectedRoute path="/OrderList" component={OrderList} />
+                    <ProtectedRoute path="/OrderDetails/:id" component={OrderDetailsView} />
+                </Switch>
+            </BrowserRouter>
         );
-        
-
     }
-
 }
 
 export default App;

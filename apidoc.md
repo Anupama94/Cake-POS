@@ -66,7 +66,7 @@ View details of a currently-open order.
 GET	/v1/orders/all/{user_id}
 ```
 
-View details of a currently-open order.
+View orders created by the given user_id.
 
 - ##### Path Parameters
 
@@ -80,7 +80,7 @@ View details of a currently-open order.
 
 - **Example Response**
 
-  {
+  [{
       "_id": "5c6f7e3bc65ba5267af2d27e",
       "items": [
           {
@@ -112,7 +112,7 @@ View details of a currently-open order.
       "time": "2019-02-22T04:44:43.455Z",
       "__v": 0
 
-  }
+  }]
 
 
 
@@ -122,7 +122,7 @@ View details of a currently-open order.
 PUT	/v1/orders/{id}
 ```
 
-Add oder-items to an already open order
+Add oder-items, remove order-items, change order status from open to closed, in an already open order
 
 - ##### Path Parameters
 
@@ -162,10 +162,7 @@ Add oder-items to an already open order
   ],
       "status": "open",
       "customer": "Table 6",
-      "totalPrice": 3750,
-      "creator": "5c6f7e3bc65ba5267af2d27f",
-      "time": "2019-02-22T04:44:43.455Z",
-      "__v": 0
+      "totalPrice": 3750
 
   }
 
@@ -177,7 +174,7 @@ Add oder-items to an already open order
 
 # Items 
 
-The orders name-space contains resource collections for creating, closing, updating and viewing of currently open orders.
+The items name-space contains resource collections for viewing available items in the database.
 
 
 
@@ -191,13 +188,13 @@ View details of a currently-open order.
 
 - ##### Path Parameters
 
-  **id** (required)		The order id of the order which needs to be checked
+  **id** (required)		The item id of the item which needs to be checked
 
 - ##### Example Request
 
   GET 			http://localhost:3001/items/5c6f7e3bc65ba5267af2d27e
 
-  A successful request returns the HTTP `200 OK` status code and a JSON response body that lists order details with the requested id.
+  A successful request returns the HTTP `200 OK` status code and a JSON response body that lists order details with the requested id. If there is no item found for the given item_id, a HTTP `404 NOT FOUND` is returned. 
 
 - **Example Response**
 
@@ -223,7 +220,7 @@ View all the items tat could be ordered.
 
   GET 			http://localhost:3001/items
 
-  A successful request returns the HTTP `200 OK` status code and a JSON response body that lists order details with the requested id.
+  A successful request returns the HTTP `200 OK` status code and a JSON response body that lists order details with the requested id. If there is no orders found in the databse, a HTTP `404 NOT FOUND` is returned. 
 
 - **Example Response**
 
@@ -255,14 +252,14 @@ View all the items tat could be ordered.
 
 # Users 
 
-The orders name-space contains resource collections for creating, closing, updating and viewing of currently open orders.
+The users name-space contains resource collections for registering, logging-in and deleting a user.
 
 
 
 #### User Login
 
 ```
-POST	/v1/orders/{order_id}
+POST	/v1/users/login
 ```
 
 - ##### Example Request
@@ -286,3 +283,65 @@ POST	/v1/orders/{order_id}
      	 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY2RA"
 
   }
+
+
+
+#### User Registration
+
+```
+POST	/v1/users/register
+```
+
+- ##### Example Request
+
+  POST 			http://localhost:3001/users/register
+
+  {
+
+  ​	"email": "abcd@123.com",
+
+  ​	"password": *********************
+
+  }
+
+  If the provided email already exists in the database, a HTTP `401 CONFLICT` response is sent, whereas a successful registration responds with a HTTP `201 CREATED` response.
+
+- **Example Response**
+
+  {
+     	 "message": "Auth successful",
+     	 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY2RA"
+
+  }
+
+
+
+#### DELETE USER
+
+```
+DELETE	/v1/users/{user_id}
+```
+
+##### Path Parameters
+
+**user_id** (required)		The user id of the user which needs to be deleted from the system
+
+- ##### Example Request
+
+  DELETE 			http://localhost:3001/5c63a27345a37036e8c92cf9
+
+  If the user with the provided id is successfully deleted, a HTTP`200 OK` response is sent.
+
+- **Example Response**
+
+  {
+     	 "message": "Auth successful",
+     	 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY2RA"
+
+  }
+
+
+
+
+
+** In any of the above API calls, if an error is thrown from the server-side, a HTTP `500 INTERNAL_SERVER_ERROR` is sent as the response.

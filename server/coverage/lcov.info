@@ -372,7 +372,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/anupamaa/Desktop/Training/pos/server/api/models/users.test.js
+SF:/home/anupamaa/Desktop/Training/pos/server/api/models/userController.test.js
 FNF:0
 FNH:0
 DA:1,1

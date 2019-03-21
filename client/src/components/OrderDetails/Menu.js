@@ -3,9 +3,7 @@ import {
     Card, Col, Row, CardHeader, ListGroup, ListGroupItem, ListGroupItemHeading
 } from 'reactstrap';
 import { getMenuItems } from "../../apiCalls/callApi";
-
 import './OrderDetails.css';
-
 
 
 class Menu extends React.Component {
@@ -29,19 +27,16 @@ class Menu extends React.Component {
             return item._id === id;
         });
         let selectedItem = Object.assign({}, this.state.items[index]);
-
         this.props.sendMenuItem(selectedItem);
 
     }
 
 
-    
+
 
     render() {
         return (
             <div>
-
-
                 <Card outline color="secondary">
                     <CardHeader tag="h3" style={{ backgroundColor: "grey" }} >Menu</CardHeader>
                     <Row>
@@ -65,7 +60,6 @@ class Menu extends React.Component {
 
                             </ListGroup>
                         </Col>
-
                         <Col xs="6" sm="6">
                             <ListGroup >
                                 <ListGroupItem >
@@ -89,7 +83,6 @@ class Menu extends React.Component {
 
                 </Card>
             </div >
-
         );
     }
 

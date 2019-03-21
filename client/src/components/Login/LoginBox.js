@@ -6,7 +6,6 @@ import auth from '../../authentication/auth';
 import { userLogin } from '../../apiCalls/callApi';
 
 
-
 export class LoginBox extends React.Component {
 
   constructor(props) {
@@ -34,7 +33,7 @@ export class LoginBox extends React.Component {
 
 
   submitLogin = () => {
-    
+
     if ((this.state.validate.emailState !== 'has-success') && (this.state.validate.passwordState !== 'has-success')) {
       this.setState({ validate: { emailState: 'has-danger', passwordState: this.state.validate.passwordState } });
     }

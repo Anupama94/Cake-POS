@@ -1,9 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const CheckAuth = require('../middleware/checkAuth');
 const ItemController = require('../controllers/itemController');
 
-router.get('/', CheckAuth.authenticate, ItemController.itemsGetAll);
+const router = express.Router();
+
+router.get('/', ItemController.itemsGetAll);
 
 router.get('/:itemId', CheckAuth.authenticate, ItemController.itemsGetItem);
 
@@ -12,11 +13,11 @@ router.get('/:itemId', CheckAuth.authenticate, ItemController.itemsGetItem);
 
     */
 
-router.post('/', ItemController.itemsCreateItem);
+router.post('/', CheckAuth.authenticate, ItemController.itemsCreateItem);
 
 router.delete('/:itemId', ItemController.itemsDeleteItem);
 
-router.patch('/:itemId', ItemController.itemsUpdateItem);
+router.put('/:itemId', ItemController.itemsUpdateItem);
 
 
 module.exports = router;

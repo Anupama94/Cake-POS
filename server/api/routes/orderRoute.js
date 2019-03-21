@@ -1,14 +1,15 @@
 const express = require('express');
-const router = express.Router();
 const CheckAuth = require('../middleware/checkAuth');
 const OrderController = require('../controllers/orderController');
 
-router.get('/', CheckAuth.authenticate, OrderController.ordersGetAll);
+const router = express.Router();
+
+router.get('/', OrderController.ordersGetAll);
 
 router.get('/:orderId', CheckAuth.authenticate, OrderController.ordersGetOrder);
 
-router.get('/all/:userId', CheckAuth.authenticate, OrderController.ordersGetByUserId);
-    
+router.get('/all/:userId', OrderController.ordersGetByUserId);
+
 router.put('/:orderId', OrderController.ordersUpdateOrder);
 
 /*
@@ -16,9 +17,9 @@ router.put('/:orderId', OrderController.ordersUpdateOrder);
         Remove!
 */
 
-router.post('/:userId', OrderController.ordersCreateOrder);
-
-router.delete('/:orderId', OrderController.orderDeleteOrder);
+// router.post('/:userId', OrderController.ordersCreateOrder);
+//
+// router.delete('/:orderId', OrderController.orderDeleteOrder);
 
 
 module.exports = router;

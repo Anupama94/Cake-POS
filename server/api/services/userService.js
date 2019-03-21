@@ -12,7 +12,7 @@ exports.getUser = (email) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -20,19 +20,38 @@ exports.getUser = (email) => {
 };
 
 
-exports.registerUser = (data) => {
+exports.checkUserExists = (data) => {
     return User.find(data)
         .exec()
         .then((returnedUser) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
         });
 };
+
+
+// exports.registerUser = (req, hash) => {
+//     const user = new User({
+//         username: req.body.username,
+//         email: req.body.email,
+//         password: hash
+//     });
+//     return user.save()
+//         .then((result) => {
+//             return result;
+//         })
+//         .catch((err) => {
+//             logger.error('error initiated in the Database, userService.js');
+//             return messages.error(
+//                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+//             );
+//         });
+// };
 
 
 exports.deleteUser = (data) => {
@@ -42,7 +61,7 @@ exports.deleteUser = (data) => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
@@ -57,7 +76,7 @@ exports.getAllUsers = () => {
             return returnedUser;
         })
         .catch((err) => {
-            logger.error('error initiated in the Database');
+            logger.error('error initiated in the Database, userService.js');
             return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );

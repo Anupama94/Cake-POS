@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const HttpStatus = require('http-status-codes');
 const ErrorConstants = require('../errorConstants');
 const UserService = require('../services/userService');
+const User = require('../models/user');
 
 
 exports.usersLogin = (req, res) => {
@@ -15,7 +16,7 @@ exports.usersLogin = (req, res) => {
                     code: ErrorConstants.AUTH_FAILED.CODE
                 });
             }
-            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+            return bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (err) {
                     return res.status(HttpStatus.UNAUTHORIZED).json({
                         message: ErrorConstants.AUTH_FAILED.MESSAGE,
@@ -39,14 +40,14 @@ exports.usersLogin = (req, res) => {
                         token
                     });
                 }
-                res.status(HttpStatus.UNAUTHORIZED).json({
+                return res.status(HttpStatus.UNAUTHORIZED).json({
                     message: ErrorConstants.AUTH_FAILED.MESSAGE,
                     code: ErrorConstants.AUTH_FAILED.CODE
                 });
             });
         })
         .catch((err) => {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 error: err
             });
         });
@@ -57,58 +58,51 @@ exports.usersLogin = (req, res) => {
 
  */
 
-// exports.usersRegisterUser = (req, res, next) => {
-//     // Ensure that two accounts are not made under the same email
-//     UserService.registerUser({ email: req.body.email })
-//         .then(user => {
-//             if (user.length >= 1) {
-//                 return res.status(409).json({   // ststus=409 conflict of resources
-//                     message: "Mail exists"
-//                 });
-//             }
-//             else {
-//                 bcrypt.hash(req.body.password, 10, (err, hash) => {
-//                     if (err) {
-//                         return res.status(500).json({
-//                             error: err
-//                         });
-//                     }
-//                     else {
-//                         const user = new User({
-//                             _id: mongoose.Types.ObjectId(),
-//                             username: req.body.username,
-//                             email: req.body.email,
-//                             password: hash
-//                         });
-//                         user.save()
-//                             .then(result => {
-//                                 console.log(result);
-//                                 res.status(201).json({
-//
-//                                     //TODO success true
-//                                     message: "User created"
-//                                 });
-//                             })
-//                             .catch(err => {
-//                                 console.log(err);
-//                                 res.status(500).json({
-//                                     error: err
-//                                 })
-//                             });
-//                     }
-//                 });
-//             }
-//         })
-//         .catch();
-// }
+exports.usersRegisterUser = (req, res) => {
+    // Ensure that two accounts are not made under the same email
+    UserService.checkUserExists({ email: req.body.email })
+        .then((user) => {
+            if (user.length >= 1) {
+                return res.status(HttpStatus.CONFLICT).json({ // status=409 conflict of resources
+                    message: 'Mail exists'
+                });
+            }
+            return bcrypt.hash(req.body.password, 10, (err, hash) => {
+                if (err) {
+                    return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                        error: err
+                    });
+                }
+
+                return UserService.registerUser(req, hash)
+                    .then((result) => {
+                        return res.status(HttpStatus.CREATED).json({
+                            message: 'User created',
+                            data: result
+                        });
+                    })
+                    .catch((error) => {
+                        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                            error
+                        });
+                    });
+            });
+        })
+        .catch((err) => {
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+                error: err
+            });
+        });
+};
 
 
 exports.usersDeleteUser = (req, res) => {
-    UserService.deleteUser({ _id: req.params.userId })
+    User.remove({ _id: req.params.userId })
         .exec()
-        .then(() => {
+        .then((result) => {
             res.status(HttpStatus.OK).json({
-                message: 'User deleted'
+                message: 'User deleted',
+                data: result
             });
         })
         .catch((err) => {

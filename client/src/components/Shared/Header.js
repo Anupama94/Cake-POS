@@ -10,9 +10,9 @@ class Header extends React.Component {
         router: PropTypes.object
     }
 
-    logout(e){
+    logout(e) {
 
-            if (window.confirm('Are you sure you wish to delete this item?')){
+        if (window.confirm('Are you sure you wish to log out?')) {
             auth.logout(() => {
                 this.context.router.history.push("/");
             });
@@ -24,20 +24,20 @@ class Header extends React.Component {
 
         return (
             <div>
-        <Navbar color="navbar-dark bg-dark" light expand="md">
-        <NavbarBrand href="/"><h2 className="orangify">Cake | POS</h2></NavbarBrand>
+                <Navbar color="navbar-dark bg-dark" light expand="md">
+                    <NavbarBrand href="/"><h2 className="orangify">Cake | POS</h2></NavbarBrand>
 
-    <Nav className="ml-auto" navbar>
-    <NavItem>
-    <Button className="orangify" id="logout-btn" onClick={this.logout.bind(this)} >Log Out</Button>
-    </NavItem>
-    </Nav>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <Button className="orangify" id="logout-btn" onClick={this.logout.bind(this)} >Log Out</Button>
+                        </NavItem>
+                    </Nav>
 
 
-    </Navbar>
-    <br />
-    </div>
-    );
+                </Navbar>
+                <br />
+            </div>
+        );
     }
 }
 

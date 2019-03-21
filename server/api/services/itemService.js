@@ -15,7 +15,7 @@ exports.getItemById = function (id) {
                 return messages.success();
             }
             logger.info('data successfully received from the database');
-            return messages.success(returnedItem, 'Data Available');
+            return messages.success(returnedItem);
         })
         .catch((err) => {
             logger.error('Error initiated within the database');
@@ -48,8 +48,59 @@ exports.getAllItems = function () {
             return messages.success(response);
         })
         .catch((err) => {
-            messages.error(
+            return messages.error(
                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
             );
         });
 };
+
+
+// exports.createItem = (req) => {
+//     const item = new Item({
+//         name: req.body.name,
+//         price: req.body.price,
+//         category: req.body.category
+//     });
+//     return item.save()
+//         .then(() => {
+//             return messages.success(item);
+//         })
+//         .catch((err) => {
+//             return messages.error(
+//                 err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+//             );
+//         });
+// };
+
+
+exports.deleteItem = (id) => {
+    return Item.deleteOne({ _id: id })
+        .exec()
+        .then((result) => {
+                return messages.success(result);
+        })
+        .catch((err) => {
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
+        });
+};
+
+
+exports.updateItem = (req) => {
+    const id = req.params.itemId;
+    const updateOps = {};
+    Object.keys(req.body).forEach(key => { updateOps[key] = req.body[key]; });
+    return Item.update({ _id: id }, { $set: updateOps })
+        .exec()
+        .then((result) => {
+            return messages.success(result);
+        })
+        .catch((err) => {
+            return messages.error(
+                err, ErrorConstants.DATABASE_ERROR.MESSAGE, ErrorConstants.DATABASE_ERROR.CODE
+            );
+        });
+};
+
+

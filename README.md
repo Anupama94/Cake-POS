@@ -6,8 +6,9 @@ The app demonstrates a simple POS application catering to a basic set of require
 
 ## Requirements
 
-- Node 8
-- react: 16
+- React 16.8.1
+- Node 8.10
+- Mongoose 5.4.11
 
 ## Common setup
 
@@ -29,7 +30,21 @@ To start the client, run the following
 
 ```
 cd client
+npm install
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000/) and take a look around.
+The server-side has been integrated with ESLint to check the source code for programmatic as well as stylistic errors. Using the airbnb rule-set, the code consists of 0 eslint issues.
+
+Server-side unit test coverage as of 21.03.2019, is **78%**. To run the unit tests,
+
+```
+cd server
+npm test
+```
+
+Open [http://localhost:3000](http://localhost:3000/) and take a look around by logging in with the following credentials.
+
+​	username: abcd@123.com
+
+​	password: abc
