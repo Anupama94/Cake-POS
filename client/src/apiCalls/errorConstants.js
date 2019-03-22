@@ -15,9 +15,14 @@ export const error = {
         CODE: 4002
     },
 
+    CONNECTION_REFUSED : {
+        MESSAGE: "Please check whether the server is up!",
+        CODE: 4003
+    },
+
     UNRECOGNIZED_ERROR : {
         MESSAGE: "Unrecognized error",
-        CODE: 4003
+        CODE: 4004
     }
 }
 

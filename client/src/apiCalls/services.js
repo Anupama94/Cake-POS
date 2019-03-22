@@ -10,13 +10,19 @@ export const postCall = (url, mydata) => {
         let callingUrl = baseUrl + url;
         axios.post(callingUrl, mydata)
             .then(response => {
+                console.log("comes here", response);
                 if (response.status === HttpStatus.OK || response.status === HttpStatus.CREATED) {
                     resolve(response);
                 }
             }
             )
             .catch(err => {
-                if (err.response.status === HttpStatus.UNAUTHORIZED) {
+                if (!err.response) {
+                    console.log("Network Error");
+                    err.response = {status: HttpStatus.BAD_GATEWAY};
+                    reject(err);
+                }
+                else if (err.response.status === HttpStatus.UNAUTHORIZED) {
                     console.log("Unauthorized request initiated from axios post call in callApi.js");
                     reject(err);
                 }

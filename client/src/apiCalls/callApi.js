@@ -27,6 +27,12 @@ export const userLogin = (credentials) => {
                         code: error.SERVICE_UNAVAILABLE.CODE
                     });
                 }
+                else if (err.response.status === HttpStatus.BAD_GATEWAY) {
+                    reject({
+                        message: error.CONNECTION_REFUSED.MESSAGE,
+                        code: error.CONNECTION_REFUSED.CODE
+                    });
+                }
                 else {
                     reject({
                         message: error.UNRECOGNIZED_ERROR.MESSAGE,
@@ -36,7 +42,7 @@ export const userLogin = (credentials) => {
 
             });
     });
-}
+};
 
 
 export const getOrderItems = (orderId) => {
@@ -65,7 +71,7 @@ export const getOrderItems = (orderId) => {
                 }
             });
     });
-}
+};
 
 
 export const updateOrder = (orderId, updateOps) => {
@@ -92,7 +98,7 @@ export const updateOrder = (orderId, updateOps) => {
                 }
             });
     });
-}
+};
 
 
 export const getUsersOrders = () => {
@@ -121,7 +127,7 @@ export const getUsersOrders = () => {
                 }
             });
     });
-}
+};
 
 
 export const getMenuItems = () => {
@@ -151,6 +157,6 @@ export const getMenuItems = () => {
                 }
             });
     });
-}
+};
 
 

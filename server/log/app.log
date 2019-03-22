@@ -548,3 +548,10 @@
 [2019-03-21T11:49:26.401] [INFO] app - order 5c75f730e306193d96b80c56 successfully updated
 [2019-03-21T11:49:28.214] [INFO] app - order 5c75f730e306193d96b80c56 successfully updated
 [2019-03-21T11:49:28.833] [INFO] app - order by the given id successfully received
+[2019-03-22T08:08:29.654] [INFO] app - orders of user 5c62e636694ff510c4f4ed52 successfully retrieved
+[2019-03-22T08:08:32.381] [INFO] app - items successfully received
+[2019-03-22T08:08:32.636] [INFO] app - order by the given id successfully received
+[2019-03-22T08:08:36.433] [INFO] app - order 5c75f730e306193d96b80c56 successfully updated
+[2019-03-22T08:08:39.254] [INFO] app - order 5c75f730e306193d96b80c56 successfully updated
+[2019-03-22T08:08:59.475] [INFO] app - order 5c75f730e306193d96b80c56 successfully updated
+[2019-03-22T08:08:59.950] [INFO] app - order by the given id successfully received
