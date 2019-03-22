@@ -23,7 +23,7 @@ npm install
 To start the express server, run the following
 
 ```
-PORT=3001 npm start
+npm start
 ```
 
 To start the client, run the following
