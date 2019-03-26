@@ -48,3 +48,13 @@ Open [http://localhost:3000](http://localhost:3000/) and take a look around by l
 ​	username: abcd@123.com
 
 ​	password: abc
+
+### Features Supported
+
+- A user can login to the system with valid credentials.
+- View the currently open list of orders.
+- Add items to an order.
+- Remove items from an order.
+- Change the quantity of each item in an order.
+- View the total cost of the order.
+- Change the status of an order from open to close.
