@@ -11,6 +11,8 @@ export const userLogin = (credentials) => {
                 if (result.status === HttpStatus.OK) {
                     apiConfig.authenticationToken = result.data.token;
                     apiConfig.userId = result.data.id;
+                    localStorage.setItem('authenticationToken', result.data.token);
+                    localStorage.setItem('userId', result.data.id);
                     resolve(result);
                 }
             })
@@ -103,7 +105,7 @@ export const updateOrder = (orderId, updateOps) => {
 
 export const getUsersOrders = () => {
     return new Promise((resolve, reject) => {
-        authenticatedGetCall("orders/all/" + apiConfig.userId)
+        authenticatedGetCall("orders/all/" + localStorage.getItem('userId'))
             .then(result => {
                 if (result.status === HttpStatus.OK) {
                     resolve(result);

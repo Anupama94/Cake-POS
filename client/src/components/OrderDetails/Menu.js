@@ -28,10 +28,8 @@ class Menu extends React.Component {
         });
         let selectedItem = Object.assign({}, this.state.items[index]);
         this.props.sendMenuItem(selectedItem);
-
+        
     }
-
-
 
 
     render() {

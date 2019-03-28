@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 
 class Order extends React.Component {
@@ -17,12 +17,11 @@ class Order extends React.Component {
 
     }
 
-    getUpdatedOrders(parentProps){
-        this.setState({orders: parentProps});
+    getUpdatedOrders(parentProps) {
+        this.setState({ orders: parentProps });
     }
 
     render() {
-        console.log("hmmm",this.state.orders);
         const orderItems = this.state.orders.map((order) => {
             return (<tr key={order.id}>
                 <th scope="row">
@@ -32,7 +31,8 @@ class Order extends React.Component {
                 <td>{order.status}</td>
             </tr>);
 
-            });
+        });
+        
         return (
 
             <tbody>

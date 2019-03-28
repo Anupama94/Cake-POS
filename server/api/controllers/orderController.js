@@ -2,7 +2,7 @@ const HttpStatus = require('http-status-codes');
 const log4js = require('log4js');
 const OrderService = require('../services/orderService');
 const ErrorConstants = require('../errorConstants');
-
+// const validateOrderService = require('../validation/validateOrder');
 const logger = log4js.getLogger('app');
 
 
@@ -113,8 +113,9 @@ exports.ordersGetByUserId = (req, res) => {
 //         OrderService.createOrder(req)
 //             .then((result) => {
 //                 if (result.success) {
+//                     console.log("1");
 //                     res.status(HttpStatus.CREATED).json({
-//                         message: 'Succefully created a new order',
+//                         message: 'Successfully created a new order',
 //                         createdItem: result.data
 //                     });
 //                 }
@@ -130,8 +131,8 @@ exports.ordersGetByUserId = (req, res) => {
 //         });
 //     }
 // };
-//
-//
+
+
 // exports.orderDeleteOrder = (req, res) => {
 //     const id = req.params.orderId;
 //     Order.remove({ _id: id })

@@ -25,12 +25,16 @@ class OrderList extends React.Component {
 
   componentDidMount() {
     getUsersOrders()
-        .then((response) => {
-           
+        .then((response) => {         
           this.setState({ orders: response.data });
+          console.log("data", response.data);
         });
   }
 
+  selectOrder = (orderId) => {
+    localStorage.setItem('selectedOrder', orderId);
+    this.context.router.history.push("/OrderDetails/" + orderId);
+  }
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
@@ -85,7 +89,7 @@ class OrderList extends React.Component {
                   {this.state.orders.map((order, count = 0) => {
                     if (!order.length && order.status === "open") {
                       count++;
-                      return (<tr key={order._id} onClick={() => { this.context.router.history.push("/OrderDetails/" + order._id); }}>
+                      return (<tr key={order._id} onClick={() => { this.selectOrder(order._id); }}>
                         <th scope="row">
                           {count}</th>
                         <td>{order.customer}</td>

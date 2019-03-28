@@ -1,6 +1,5 @@
 import React from 'react';
 import './Login.css';
-import { Form, FormGroup, Label, Input, FormFeedback, FormText, Col } from 'reactstrap';
 import { LoginBox } from './LoginBox';
 import { RegisterBox } from './RegisterBox';
 

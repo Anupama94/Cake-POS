@@ -1,4 +1,3 @@
-import { apiConfig } from '../apiCalls/config';
 import axios from 'axios';
 import { error } from './errorConstants';
 import HttpStatus from 'http-status-codes';
@@ -10,7 +9,6 @@ export const postCall = (url, mydata) => {
         let callingUrl = baseUrl + url;
         axios.post(callingUrl, mydata)
             .then(response => {
-                console.log("comes here", response);
                 if (response.status === HttpStatus.OK || response.status === HttpStatus.CREATED) {
                     resolve(response);
                 }
@@ -18,7 +16,6 @@ export const postCall = (url, mydata) => {
             )
             .catch(err => {
                 if (!err.response) {
-                    console.log("Network Error");
                     err.response = {status: HttpStatus.BAD_GATEWAY};
                     reject(err);
                 }
@@ -40,7 +37,7 @@ export const postCall = (url, mydata) => {
 
 
 export const authenticatedGetCall = (url) => {
-    let requestHeader = { headers: { "Authorization": "Bearer " + apiConfig.authenticationToken } };
+    let requestHeader = { headers: { "Authorization": "Bearer " + localStorage.getItem('authenticationToken') } };
 
     return new Promise((resolve, reject) => {
         let callingUrl = baseUrl + url;
@@ -68,7 +65,7 @@ export const authenticatedGetCall = (url) => {
 export const putCall = (url, updateOps) => {
     return new Promise((resolve, reject) => {
         let callingUrl = baseUrl + url;
-        let requestHeader = { headers: { "Authorization": "Bearer " + apiConfig.authenticationToken } };
+        //let requestHeader = { headers: { "Authorization": "Bearer " + localStorage.getItem('authenticationToken') } };
         axios.put(callingUrl, updateOps)
             .then(response => {
                 if (response.status === HttpStatus.OK || response.status === HttpStatus.NO_CONTENT || response.status === HttpStatus.CREATED) {

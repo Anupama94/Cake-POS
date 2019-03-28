@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavItem, Navbar, NavbarBrand, Collapse, NavbarToggler, Button } from 'reactstrap';
+import { Nav, NavItem, Navbar, NavbarBrand, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import auth from '../../authentication/auth';
 

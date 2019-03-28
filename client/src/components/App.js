@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -13,8 +13,8 @@ class App extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route path="/" component={Login} exact/>
-                    <ProtectedRoute path="/OrderList" component={OrderList} />
-                    <ProtectedRoute path="/OrderDetails/:id" component={OrderDetailsView} />
+                    <ProtectedRoute path="/OrderList" component={OrderList} exact/>
+                    <ProtectedRoute path="/OrderDetails/:id" component={OrderDetailsView} exact/>
                 </Switch>
             </BrowserRouter>
         );

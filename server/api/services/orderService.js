@@ -99,7 +99,7 @@ exports.getOrdersByCreator = (userId) => {
 //         const updateOps = { product: ops.product, quantity: ops.quantity };
 //         orderItems.push(updateOps);
 //     }
-//
+
 //     const order = new Order({
 //         items: orderItems,
 //         status: 'open',
@@ -108,7 +108,7 @@ exports.getOrdersByCreator = (userId) => {
 //         creator: userId,
 //         time: Date.now()
 //     });
-//
+
 //     return order.save()
 //         .then(() => {
 //             return messages.success(order);
