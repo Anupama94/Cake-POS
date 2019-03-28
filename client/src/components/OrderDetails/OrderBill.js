@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Card, CardText, Button, Col, Row,
     CardHeader, CardBody, Table, CardFooter,
-    ButtonGroup
+    ButtonGroup, Alert
 } from 'reactstrap';
 import { FaWindowClose, FaChevronUp, FaChevronDown } from 'react-icons/fa';
 import './OrderDetails.css';
@@ -18,7 +18,11 @@ class OrderBill extends React.Component {
             selectedOrderId: props.orderId,
             selectedOrder: [],
             totalPayable: 0,
-            status: ""
+            status: "",
+            errorAlert: {
+                visible: false,
+                message: ''
+            }
         };
     }
 
@@ -31,6 +35,9 @@ class OrderBill extends React.Component {
         getOrderItems(localStorage.getItem('selectedOrder'))
             .then((result) => {
                 this.setState({ selectedOrder: result.data.items, totalPayable: result.data.totalPrice, status: result.data.status });
+            })
+            .catch((err) => {
+                this.setState({ errorAlert: { visible: true, message: err.message } });
             });
     }
 
@@ -175,9 +182,9 @@ class OrderBill extends React.Component {
     closeOrder = () => {
         this.updateOrderStatus().then((updatedOrder) => {
             this.updateDB(updatedOrder).then((res) => {
-            this.context.router.history.push("/OrderList");
-        })
-    });
+                this.context.router.history.push("/OrderList");
+            })
+        });
 
 
     }
@@ -235,6 +242,9 @@ class OrderBill extends React.Component {
                             <div id="scrollableContainer">
                                 {this.loadOrderBill()}
                             </div>
+                            <Alert color="danger" isOpen={this.state.errorAlert.visible}>
+                                {this.state.errorAlert.message}
+                            </Alert>
                         </CardText>
                     </CardBody>
 

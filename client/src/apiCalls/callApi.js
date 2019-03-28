@@ -121,6 +121,12 @@ export const getUsersOrders = () => {
                         code: error.SERVICE_UNAVAILABLE.CODE
                     });
                 }
+                else if (err.response.status === HttpStatus.BAD_GATEWAY) {
+                    reject({
+                        message: error.CONNECTION_REFUSED.MESSAGE,
+                        code: error.CONNECTION_REFUSED.CODE
+                    });
+                }
                 else {
                     reject({
                         message: error.UNRECOGNIZED_ERROR.MESSAGE,

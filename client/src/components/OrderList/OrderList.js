@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
+import { Table, Row, Col, Nav, NavItem, NavLink, Alert } from 'reactstrap';
 import './OrderList.css';
 import classnames from 'classnames';
 import Header from '../Shared/Header';
@@ -12,7 +12,11 @@ class OrderList extends React.Component {
     super(props);
     this.state = {
       activeTab: '1',
-      orders: []
+      orders: [],
+      errorAlert: {
+        visible: false,
+        message: ''
+      }
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -25,10 +29,12 @@ class OrderList extends React.Component {
 
   componentDidMount() {
     getUsersOrders()
-        .then((response) => {         
-          this.setState({ orders: response.data });
-          console.log("data", response.data);
-        });
+      .then((response) => {
+        this.setState({ orders: response.data });
+      })
+      .catch((err) => {
+        this.setState({ errorAlert: { visible: true, message: err.message } });
+      });
   }
 
   selectOrder = (orderId) => {
@@ -100,6 +106,11 @@ class OrderList extends React.Component {
                   })}
                 </tbody>
               </Table>
+
+              <Alert color="danger" isOpen={this.state.errorAlert.visible}>
+                {this.state.errorAlert.message}
+              </Alert>
+
             </Col>
           </Row>
         </div>

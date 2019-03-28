@@ -48,7 +48,11 @@ export const authenticatedGetCall = (url) => {
                 }
             })
             .catch(err => {
-                if (err.response.status === HttpStatus.INTERNAL_SERVER_ERROR) {
+                if (!err.response) {
+                    err.response = {status: HttpStatus.BAD_GATEWAY};
+                    reject(err);
+                }
+                else if (err.response.status === HttpStatus.INTERNAL_SERVER_ERROR) {
                     console.log("Internal Server Error initiated from axios authenticatedGetCall in callApi.js")
                     reject(err);
                 }
